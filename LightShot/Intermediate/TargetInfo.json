@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "LightShot",
+			"Path": "C:\\Users\\Michael\\Documents\\Unreal Projects\\LightShot\\Source\\LightShot.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "LightShotEditor",
+			"Path": "C:\\Users\\Michael\\Documents\\Unreal Projects\\LightShot\\Source\\LightShotEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}

@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="..\..\LightShot.uproject" />
+    <Filter Include="Source">
+      <UniqueIdentifier>{A25B13C8-D5BE-4B15-8521-48D884E1814D}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\LightShot.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\Source\LightShotEditor.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <Filter Include="Config">
+      <UniqueIdentifier>{0261513C-3E7F-4FFD-BD4F-295BCF8BAB33}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\DefaultEditor.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEditorPerProjectUserSettings.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEngine.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultGame.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultInput.ini">
+      <Filter>Config</Filter>
+    </None>
+    <Filter Include="Source\LightShot">
+      <UniqueIdentifier>{A90982B2-AEA2-4904-9D9C-25836900F66D}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\LightShot\LightShot.Build.cs">
+      <Filter>Source\LightShot</Filter>
+    </None>
+    <ClCompile Include="..\..\Source\LightShot\LightShot.cpp">
+      <Filter>Source\LightShot</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\LightShot\LightShot.h">
+      <Filter>Source\LightShot</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\LightShot\LightShotGameMode.cpp">
+      <Filter>Source\LightShot</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\LightShot\LightShotGameMode.h">
+      <Filter>Source\LightShot</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\LightShot\LightShotPawn.cpp">
+      <Filter>Source\LightShot</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\LightShot\LightShotPawn.h">
+      <Filter>Source\LightShot</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\LightShot\LightShotProjectile.cpp">
+      <Filter>Source\LightShot</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\LightShot\LightShotProjectile.h">
+      <Filter>Source\LightShot</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\LightShot\ShipPawnBase.cpp">
+      <Filter>Source\LightShot</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\LightShot\ShipPawnBase.h">
+      <Filter>Source\LightShot</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
