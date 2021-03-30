@@ -42,6 +42,16 @@ public:
 	UPROPERTY(Category = Audio, EditAnywhere, BlueprintReadWrite)
 	class USoundBase* FireSound;
 
+
+	float ForwardValue;
+	float RightValue;
+	FVector Movement;
+
+	//Firing
+	float FireForwardValue;
+	float FireRightValue;
+	FVector ShotDirection;
+
 	// Begin Actor Interface
 	virtual void Tick(float DeltaSeconds) override;
 	virtual void SetupPlayerInputComponent(class UInputComponent* InputComponent) override;
@@ -49,6 +59,11 @@ public:
 
 	/* Fire a shot in the specified direction */
 	void FireShot(FVector FireDirection);
+
+	void CalculateMovement(float DeltaSeconds);
+	void CalculateRotation();
+	void CalculateFireDirection();
+	void FireWeapon();
 
 	/* Handler for the fire timer expiry */
 	void ShotTimerExpired();

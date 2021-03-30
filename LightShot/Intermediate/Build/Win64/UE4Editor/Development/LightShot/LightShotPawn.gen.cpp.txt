@@ -1,11 +1,11 @@
-C:\Users\Michael\Documents\Unreal Projects\LightShot\Intermediate\Build\Win64\UE4Editor\Development\LightShot\Definitions.LightShot.h
+C:\Users\Michael\Documents\Github\LightShooter\LightShot\Intermediate\Build\Win64\UE4Editor\Development\LightShot\Definitions.LightShot.h
 C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\CoreUObject\Public\UObject/GeneratedCppIncludes.h
 C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\CoreUObject\Public\UObject/MetaData.h
-C:\Users\Michael\Documents\Unreal Projects\LightShot\Source\LightShot/LightShotPawn.h
+C:\Users\Michael\Documents\Github\LightShooter\LightShot\Source\LightShot/LightShotPawn.h
 C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\Engine\Classes\GameFramework/Character.h
 C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\Engine\Classes\GameFramework/CharacterMovementReplication.h
 C:\Program Files\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\CharacterMovementReplication.generated.h
 C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\Engine\Classes\GameFramework/RootMotionSource.h
 C:\Program Files\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\RootMotionSource.generated.h
 C:\Program Files\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\Character.generated.h
-c:\users\michael\documents\unreal projects\lightshot\intermediate\build\win64\ue4editor\inc\lightshot\LightShotPawn.generated.h
+c:\users\michael\documents\github\lightshooter\lightshot\intermediate\build\win64\ue4editor\inc\lightshot\LightShotPawn.generated.h

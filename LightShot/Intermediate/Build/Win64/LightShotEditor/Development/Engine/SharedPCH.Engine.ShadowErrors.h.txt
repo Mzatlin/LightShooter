@@ -1,4 +1,4 @@
-C:/Users/Michael/Documents/Unreal Projects/LightShot/Intermediate/Build/Win64/LightShotEditor/Development/Engine/SharedPCH.Engine.ShadowErrors.h
+C:/Users/Michael/Documents/Github/LightShooter/LightShot/Intermediate/Build/Win64/LightShotEditor/Development/Engine/SharedPCH.Engine.ShadowErrors.h
 C:/Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Public/EngineSharedPCH.h
 C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\Containers/ContainersFwd.h
 C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\CoreTypes.h

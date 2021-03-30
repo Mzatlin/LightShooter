@@ -63,25 +63,28 @@ void ALightShotPawn::SetupPlayerInputComponent(class UInputComponent* PlayerInpu
 	PlayerInputComponent->BindAxis(FireRightBinding);
 }
 
-void ALightShotPawn::Tick(float DeltaSeconds)
+void ALightShotPawn::CalculateMovement(float DeltaSeconds) 
 {
 	// Find movement direction
-	const float ForwardValue = GetInputAxisValue(MoveForwardBinding);
-	const float RightValue = GetInputAxisValue(MoveRightBinding);
+	ForwardValue = GetInputAxisValue(MoveForwardBinding);
+	RightValue = GetInputAxisValue(MoveRightBinding);
 
 	// Clamp max size so that (X=1, Y=1) doesn't cause faster movement in diagonal directions
 	const FVector MoveDirection = FVector(ForwardValue, RightValue, 0.f).GetClampedToMaxSize(1.0f);
 
 	// Calculate  movement
-	const FVector Movement = MoveDirection * MoveSpeed * DeltaSeconds;
+	Movement = MoveDirection * MoveSpeed * DeltaSeconds;
+}
 
+void ALightShotPawn::CalculateRotation() 
+{
 	// If non-zero size, move this actor
 	if (Movement.SizeSquared() > 0.0f)
 	{
 		const FRotator NewRotation = Movement.Rotation();
 		FHitResult Hit(1.f);
 		RootComponent->MoveComponent(Movement, NewRotation, true, &Hit);
-		
+
 		if (Hit.IsValidBlockingHit())
 		{
 			const FVector Normal2D = Hit.Normal.GetSafeNormal2D();
@@ -89,14 +92,29 @@ void ALightShotPawn::Tick(float DeltaSeconds)
 			RootComponent->MoveComponent(Deflection, NewRotation, true);
 		}
 	}
-	
-	// Create fire direction vector
-	const float FireForwardValue = GetInputAxisValue(FireForwardBinding);
-	const float FireRightValue = GetInputAxisValue(FireRightBinding);
-	const FVector FireDirection = FVector(FireForwardValue, FireRightValue, 0.f);
+}
 
+void ALightShotPawn::CalculateFireDirection()
+{
+	// Create fire direction vector
+	FireForwardValue = GetInputAxisValue(FireForwardBinding);
+	FireRightValue = GetInputAxisValue(FireRightBinding);
+	ShotDirection = FVector(FireForwardValue, FireRightValue, 0.f);
+}
+
+void ALightShotPawn::FireWeapon()
+{
 	// Try and fire a shot
-	FireShot(FireDirection);
+	FireShot(ShotDirection);
+}
+
+void ALightShotPawn::Tick(float DeltaSeconds)
+{
+
+	CalculateMovement(DeltaSeconds);
+	CalculateRotation();
+	CalculateFireDirection();
+	FireWeapon();
 }
 
 void ALightShotPawn::FireShot(FVector FireDirection)
