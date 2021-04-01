@@ -2,6 +2,7 @@
 
 
 #include "ShipPawnBase.h"
+#include "Components/CapsuleComponent.h"
 
 // Sets default values
 AShipPawnBase::AShipPawnBase()
@@ -9,6 +10,11 @@ AShipPawnBase::AShipPawnBase()
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
+	CollisionComponent = CreateDefaultSubobject<UCapsuleComponent>(TEXT("Collider"));
+	RootComponent = CollisionComponent;
+
+	ShipMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Ship Mesh"));
+	ShipMesh->SetupAttachment(RootComponent);
 }
 
 // Called when the game starts or when spawned

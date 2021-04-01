@@ -6,10 +6,19 @@
 #include "GameFramework/Pawn.h"
 #include "ShipPawnBase.generated.h"
 
+class UCapsuleComponent;
+class UStaticMeshComponent;
+
 UCLASS()
 class LIGHTSHOT_API AShipPawnBase : public APawn
 {
 	GENERATED_BODY()
+
+private: 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
+	UCapsuleComponent* CollisionComponent;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
+	UStaticMeshComponent* ShipMesh;
 
 public:
 	// Sets default values for this pawn's properties
