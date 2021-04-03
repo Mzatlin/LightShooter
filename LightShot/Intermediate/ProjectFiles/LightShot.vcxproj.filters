@@ -3,7 +3,7 @@
   <ItemGroup>
     <None Include="..\..\LightShot.uproject" />
     <Filter Include="Source">
-      <UniqueIdentifier>{882DB5A0-333A-4131-A7BE-C59EC033931E}</UniqueIdentifier>
+      <UniqueIdentifier>{821AD9FC-7A00-4F92-A532-3F592D357876}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\LightShot.Target.cs">
       <Filter>Source</Filter>
@@ -12,7 +12,7 @@
       <Filter>Source</Filter>
     </None>
     <Filter Include="Config">
-      <UniqueIdentifier>{6E41B533-600A-437E-AC03-8D7F1030B080}</UniqueIdentifier>
+      <UniqueIdentifier>{2FCADE1B-BC33-4856-B3F0-6F540D26197F}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Config\DefaultEditor.ini">
       <Filter>Config</Filter>
@@ -30,7 +30,7 @@
       <Filter>Config</Filter>
     </None>
     <Filter Include="Source\LightShot">
-      <UniqueIdentifier>{100146CA-C2C1-43E3-AC76-B4C78CF9488A}</UniqueIdentifier>
+      <UniqueIdentifier>{D4D98AEA-A3A1-4AF4-98F4-9212C0E6F3A7}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\LightShot\LightShot.Build.cs">
       <Filter>Source\LightShot</Filter>
@@ -63,6 +63,12 @@
       <Filter>Source\LightShot</Filter>
     </ClCompile>
     <ClInclude Include="..\..\Source\LightShot\MoveActorBase.h">
+      <Filter>Source\LightShot</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\LightShot\PlayerShipPawn.cpp">
+      <Filter>Source\LightShot</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\LightShot\PlayerShipPawn.h">
       <Filter>Source\LightShot</Filter>
     </ClInclude>
     <ClCompile Include="..\..\Source\LightShot\ShipPawnBase.cpp">
