@@ -1,8 +1,12 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include "Camera/CameraComponent.h"
 #include "PlayerShipPawn.h"
+#include "Camera/CameraComponent.h"
 #include "GameFramework/SpringArmComponent.h"
+#include "Components/InputComponent.h"
+
+const FName APlayerShipPawn::MoveForwardBinding("MoveForward");
+const FName APlayerShipPawn::MoveRightBinding("MoveRight");
 
 // Sets default values
 APlayerShipPawn::APlayerShipPawn()
@@ -30,6 +34,16 @@ void APlayerShipPawn::BeginPlay()
 	
 }
 
+void APlayerShipPawn::GetInput()
+{
+	// Find movement direction
+	ForwardValue = GetInputAxisValue(MoveForwardBinding);
+	RightValue = GetInputAxisValue(MoveRightBinding);
+
+	// Clamp max size so that (X=1, Y=1) doesn't cause faster movement in diagonal directions
+	const FVector MoveDirection = FVector(ForwardValue, RightValue, 0.f).GetClampedToMaxSize(1.0f);
+}
+
 // Called every frame
 void APlayerShipPawn::Tick(float DeltaTime)
 {
@@ -41,6 +55,10 @@ void APlayerShipPawn::Tick(float DeltaTime)
 void APlayerShipPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
+	check(PlayerInputComponent);
 
+	// set up gameplay key bindings
+	PlayerInputComponent->BindAxis(MoveForwardBinding);
+	PlayerInputComponent->BindAxis(MoveRightBinding);
 }
 

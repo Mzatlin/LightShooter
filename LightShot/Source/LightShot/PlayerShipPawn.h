@@ -9,6 +9,7 @@
 
 class UCameraComponent;
 class USpringArmComponent;
+class UMoveActorBase;
 
 UCLASS()
 class LIGHTSHOT_API APlayerShipPawn : public AShipPawnBase
@@ -23,7 +24,12 @@ private:
 	/** Camera boom positioning the camera above the character */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	USpringArmComponent* CameraBoom;
-
+	
+	/** Player Ship Movement */
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
+	TSubclassOf<UMoveActorBase>MoveActorComponent;
+	float ForwardValue;
+	float RightValue;
 public:
 	// Sets default values for this pawn's properties
 	APlayerShipPawn();
@@ -31,6 +37,7 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+	void GetInput();
 
 public:	
 	// Called every frame
@@ -39,4 +46,7 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+	// Static names for axis bindings
+	static const FName MoveForwardBinding;
+	static const FName MoveRightBinding;
 };

@@ -13,10 +13,10 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define LIGHTSHOT_PlayerShipPawn_generated_h
 
-#define LightShot_Source_LightShot_PlayerShipPawn_h_16_SPARSE_DATA
-#define LightShot_Source_LightShot_PlayerShipPawn_h_16_RPC_WRAPPERS
-#define LightShot_Source_LightShot_PlayerShipPawn_h_16_RPC_WRAPPERS_NO_PURE_DECLS
-#define LightShot_Source_LightShot_PlayerShipPawn_h_16_INCLASS_NO_PURE_DECLS \
+#define LightShot_Source_LightShot_PlayerShipPawn_h_17_SPARSE_DATA
+#define LightShot_Source_LightShot_PlayerShipPawn_h_17_RPC_WRAPPERS
+#define LightShot_Source_LightShot_PlayerShipPawn_h_17_RPC_WRAPPERS_NO_PURE_DECLS
+#define LightShot_Source_LightShot_PlayerShipPawn_h_17_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAPlayerShipPawn(); \
 	friend struct Z_Construct_UClass_APlayerShipPawn_Statics; \
@@ -25,7 +25,7 @@ public: \
 	DECLARE_SERIALIZER(APlayerShipPawn)
 
 
-#define LightShot_Source_LightShot_PlayerShipPawn_h_16_INCLASS \
+#define LightShot_Source_LightShot_PlayerShipPawn_h_17_INCLASS \
 private: \
 	static void StaticRegisterNativesAPlayerShipPawn(); \
 	friend struct Z_Construct_UClass_APlayerShipPawn_Statics; \
@@ -34,7 +34,7 @@ public: \
 	DECLARE_SERIALIZER(APlayerShipPawn)
 
 
-#define LightShot_Source_LightShot_PlayerShipPawn_h_16_STANDARD_CONSTRUCTORS \
+#define LightShot_Source_LightShot_PlayerShipPawn_h_17_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API APlayerShipPawn(const FObjectInitializer& ObjectInitializer); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(APlayerShipPawn) \
@@ -47,7 +47,7 @@ private: \
 public:
 
 
-#define LightShot_Source_LightShot_PlayerShipPawn_h_16_ENHANCED_CONSTRUCTORS \
+#define LightShot_Source_LightShot_PlayerShipPawn_h_17_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	NO_API APlayerShipPawn(APlayerShipPawn&&); \
@@ -58,32 +58,33 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(APlayerShipPawn); \
 	DEFINE_DEFAULT_CONSTRUCTOR_CALL(APlayerShipPawn)
 
 
-#define LightShot_Source_LightShot_PlayerShipPawn_h_16_PRIVATE_PROPERTY_OFFSET \
+#define LightShot_Source_LightShot_PlayerShipPawn_h_17_PRIVATE_PROPERTY_OFFSET \
 	FORCEINLINE static uint32 __PPO__CameraComponent() { return STRUCT_OFFSET(APlayerShipPawn, CameraComponent); } \
-	FORCEINLINE static uint32 __PPO__CameraBoom() { return STRUCT_OFFSET(APlayerShipPawn, CameraBoom); }
+	FORCEINLINE static uint32 __PPO__CameraBoom() { return STRUCT_OFFSET(APlayerShipPawn, CameraBoom); } \
+	FORCEINLINE static uint32 __PPO__MoveActorComponent() { return STRUCT_OFFSET(APlayerShipPawn, MoveActorComponent); }
 
 
-#define LightShot_Source_LightShot_PlayerShipPawn_h_13_PROLOG
-#define LightShot_Source_LightShot_PlayerShipPawn_h_16_GENERATED_BODY_LEGACY \
+#define LightShot_Source_LightShot_PlayerShipPawn_h_14_PROLOG
+#define LightShot_Source_LightShot_PlayerShipPawn_h_17_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	LightShot_Source_LightShot_PlayerShipPawn_h_16_PRIVATE_PROPERTY_OFFSET \
-	LightShot_Source_LightShot_PlayerShipPawn_h_16_SPARSE_DATA \
-	LightShot_Source_LightShot_PlayerShipPawn_h_16_RPC_WRAPPERS \
-	LightShot_Source_LightShot_PlayerShipPawn_h_16_INCLASS \
-	LightShot_Source_LightShot_PlayerShipPawn_h_16_STANDARD_CONSTRUCTORS \
+	LightShot_Source_LightShot_PlayerShipPawn_h_17_PRIVATE_PROPERTY_OFFSET \
+	LightShot_Source_LightShot_PlayerShipPawn_h_17_SPARSE_DATA \
+	LightShot_Source_LightShot_PlayerShipPawn_h_17_RPC_WRAPPERS \
+	LightShot_Source_LightShot_PlayerShipPawn_h_17_INCLASS \
+	LightShot_Source_LightShot_PlayerShipPawn_h_17_STANDARD_CONSTRUCTORS \
 public: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define LightShot_Source_LightShot_PlayerShipPawn_h_16_GENERATED_BODY \
+#define LightShot_Source_LightShot_PlayerShipPawn_h_17_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	LightShot_Source_LightShot_PlayerShipPawn_h_16_PRIVATE_PROPERTY_OFFSET \
-	LightShot_Source_LightShot_PlayerShipPawn_h_16_SPARSE_DATA \
-	LightShot_Source_LightShot_PlayerShipPawn_h_16_RPC_WRAPPERS_NO_PURE_DECLS \
-	LightShot_Source_LightShot_PlayerShipPawn_h_16_INCLASS_NO_PURE_DECLS \
-	LightShot_Source_LightShot_PlayerShipPawn_h_16_ENHANCED_CONSTRUCTORS \
+	LightShot_Source_LightShot_PlayerShipPawn_h_17_PRIVATE_PROPERTY_OFFSET \
+	LightShot_Source_LightShot_PlayerShipPawn_h_17_SPARSE_DATA \
+	LightShot_Source_LightShot_PlayerShipPawn_h_17_RPC_WRAPPERS_NO_PURE_DECLS \
+	LightShot_Source_LightShot_PlayerShipPawn_h_17_INCLASS_NO_PURE_DECLS \
+	LightShot_Source_LightShot_PlayerShipPawn_h_17_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

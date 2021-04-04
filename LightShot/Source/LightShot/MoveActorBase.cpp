@@ -20,9 +20,8 @@ void UMoveActorBase::BeginPlay()
 
 }
 
-void UMoveActorBase::CalculateMovement()
+void UMoveActorBase::CalculateMovement(float DeltaSeconds, FVector MovementDirection)
 {
-
 }
 
 // Called every frame
@@ -31,7 +30,7 @@ void UMoveActorBase::TickComponent(float DeltaTime, ELevelTick TickType, FActorC
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 	if (canMove) 
 	{
-		CalculateMovement();
+		//CalculateMovement(float DeltaTime, FV);
 	}
 }
 
