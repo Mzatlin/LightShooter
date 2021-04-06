@@ -60,8 +60,8 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(APlayerShipPawn); \
 
 #define LightShot_Source_LightShot_PlayerShipPawn_h_17_PRIVATE_PROPERTY_OFFSET \
 	FORCEINLINE static uint32 __PPO__CameraComponent() { return STRUCT_OFFSET(APlayerShipPawn, CameraComponent); } \
-	FORCEINLINE static uint32 __PPO__CameraBoom() { return STRUCT_OFFSET(APlayerShipPawn, CameraBoom); } \
-	FORCEINLINE static uint32 __PPO__MoveActorComponent() { return STRUCT_OFFSET(APlayerShipPawn, MoveActorComponent); }
+	FORCEINLINE static uint32 __PPO__MoveActorComponent() { return STRUCT_OFFSET(APlayerShipPawn, MoveActorComponent); } \
+	FORCEINLINE static uint32 __PPO__CameraBoom() { return STRUCT_OFFSET(APlayerShipPawn, CameraBoom); }
 
 
 #define LightShot_Source_LightShot_PlayerShipPawn_h_14_PROLOG

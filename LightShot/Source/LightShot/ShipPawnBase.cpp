@@ -2,7 +2,10 @@
 
 
 #include "ShipPawnBase.h"
+#include "Components/StaticMeshComponent.h"
 #include "Components/CapsuleComponent.h"
+#include "Engine/CollisionProfile.h"
+#include "Engine/StaticMesh.h"
 
 // Sets default values
 AShipPawnBase::AShipPawnBase()
@@ -15,6 +18,8 @@ AShipPawnBase::AShipPawnBase()
 
 	ShipMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Ship Mesh"));
 	ShipMesh->SetupAttachment(RootComponent);
+	ShipMesh->SetCollisionProfileName(UCollisionProfile::Pawn_ProfileName);
+	//ShipMesh->SetStaticMesh(ShipMesh.Object);
 }
 
 // Called when the game starts or when spawned

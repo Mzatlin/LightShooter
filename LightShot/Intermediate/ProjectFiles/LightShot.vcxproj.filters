@@ -3,7 +3,7 @@
   <ItemGroup>
     <None Include="..\..\LightShot.uproject" />
     <Filter Include="Source">
-      <UniqueIdentifier>{9E7261D2-7533-49B3-AB83-9F9B91E15C20}</UniqueIdentifier>
+      <UniqueIdentifier>{4011BFC3-EDBC-4639-BFC8-018B8A63177E}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\LightShot.Target.cs">
       <Filter>Source</Filter>
@@ -12,7 +12,7 @@
       <Filter>Source</Filter>
     </None>
     <Filter Include="Config">
-      <UniqueIdentifier>{AF3179C3-83C8-4F00-822B-5B5D59EFBD10}</UniqueIdentifier>
+      <UniqueIdentifier>{203B851C-BE74-4ECF-AF51-C638BDBBBE1D}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Config\DefaultEditor.ini">
       <Filter>Config</Filter>
@@ -30,7 +30,7 @@
       <Filter>Config</Filter>
     </None>
     <Filter Include="Source\LightShot">
-      <UniqueIdentifier>{5FB0DC1E-C3B8-4684-8BE1-4CD9CCD551E4}</UniqueIdentifier>
+      <UniqueIdentifier>{5CAEACA4-C6B8-447C-87EF-2296073123FB}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\LightShot\LightShot.Build.cs">
       <Filter>Source\LightShot</Filter>
@@ -57,6 +57,12 @@
       <Filter>Source\LightShot</Filter>
     </ClCompile>
     <ClInclude Include="..\..\Source\LightShot\LightShotProjectile.h">
+      <Filter>Source\LightShot</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\LightShot\MoveActor.cpp">
+      <Filter>Source\LightShot</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\LightShot\MoveActor.h">
       <Filter>Source\LightShot</Filter>
     </ClInclude>
     <ClCompile Include="..\..\Source\LightShot\MoveActorBase.cpp">

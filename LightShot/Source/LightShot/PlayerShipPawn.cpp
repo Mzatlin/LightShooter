@@ -4,6 +4,7 @@
 #include "Camera/CameraComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Components/InputComponent.h"
+#include "MoveActor.h"
 
 const FName APlayerShipPawn::MoveForwardBinding("MoveForward");
 const FName APlayerShipPawn::MoveRightBinding("MoveRight");
@@ -25,6 +26,8 @@ APlayerShipPawn::APlayerShipPawn()
 	CameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("TopDownCamera"));
 	CameraComponent->SetupAttachment(CameraBoom, USpringArmComponent::SocketName);
 	CameraComponent->bUsePawnControlRotation = false;	// Camera does not rotate relative to arm
+
+	MoveActorComponent = CreateDefaultSubobject<UMoveActor>(TEXT("Movement Component"));
 }
 
 // Called when the game starts or when spawned
@@ -39,15 +42,18 @@ void APlayerShipPawn::GetInput()
 	// Find movement direction
 	ForwardValue = GetInputAxisValue(MoveForwardBinding);
 	RightValue = GetInputAxisValue(MoveRightBinding);
+	UE_LOG(LogTemp, Warning, TEXT("Movement: %f %f"), ForwardValue, RightValue);
 
 	// Clamp max size so that (X=1, Y=1) doesn't cause faster movement in diagonal directions
-	const FVector MoveDirection = FVector(ForwardValue, RightValue, 0.f).GetClampedToMaxSize(1.0f);
+	MoveDirection = FVector(ForwardValue, RightValue, 0.f).GetClampedToMaxSize(1.0f);
 }
 
 // Called every frame
 void APlayerShipPawn::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+	GetInput();
+	MoveActorComponent->CalculateMovement(DeltaTime, MoveDirection);
 
 }
 
@@ -55,8 +61,6 @@ void APlayerShipPawn::Tick(float DeltaTime)
 void APlayerShipPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
-	check(PlayerInputComponent);
-
 	// set up gameplay key bindings
 	PlayerInputComponent->BindAxis(MoveForwardBinding);
 	PlayerInputComponent->BindAxis(MoveRightBinding);
