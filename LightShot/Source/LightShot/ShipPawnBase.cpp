@@ -6,6 +6,7 @@
 #include "Components/CapsuleComponent.h"
 #include "Engine/CollisionProfile.h"
 #include "Engine/StaticMesh.h"
+#include "UObject/ConstructorHelpers.h"
 
 // Sets default values
 AShipPawnBase::AShipPawnBase()
@@ -16,10 +17,11 @@ AShipPawnBase::AShipPawnBase()
 	CollisionComponent = CreateDefaultSubobject<UCapsuleComponent>(TEXT("Collider"));
 	RootComponent = CollisionComponent;
 
+	static ConstructorHelpers::FObjectFinder<UStaticMesh> ShipMeshComp(TEXT("/Game/TwinStick/Meshes/TwinStickUFO.TwinStickUFO"));
 	ShipMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Ship Mesh"));
 	ShipMesh->SetupAttachment(RootComponent);
 	ShipMesh->SetCollisionProfileName(UCollisionProfile::Pawn_ProfileName);
-	//ShipMesh->SetStaticMesh(ShipMesh.Object);
+	ShipMesh->SetStaticMesh(ShipMeshComp.Object);
 }
 
 // Called when the game starts or when spawned
