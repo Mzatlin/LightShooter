@@ -73,7 +73,7 @@ void EmptyLinkFunctionForGeneratedCodeShipPawnBase() {}
 		{ "ModuleRelativePath", "ShipPawnBase.h" },
 	};
 #endif
-	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AShipPawnBase_Statics::NewProp_ShipMesh = { "ShipMesh", nullptr, (EPropertyFlags)0x00400000000a001d, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AShipPawnBase, ShipMesh), Z_Construct_UClass_UStaticMeshComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AShipPawnBase_Statics::NewProp_ShipMesh_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AShipPawnBase_Statics::NewProp_ShipMesh_MetaData)) };
+	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AShipPawnBase_Statics::NewProp_ShipMesh = { "ShipMesh", nullptr, (EPropertyFlags)0x00200800000a001d, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AShipPawnBase, ShipMesh), Z_Construct_UClass_UStaticMeshComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AShipPawnBase_Statics::NewProp_ShipMesh_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AShipPawnBase_Statics::NewProp_ShipMesh_MetaData)) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AShipPawnBase_Statics::PropPointers[] = {
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AShipPawnBase_Statics::NewProp_CollisionComponent,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AShipPawnBase_Statics::NewProp_ShipMesh,
@@ -105,7 +105,7 @@ void EmptyLinkFunctionForGeneratedCodeShipPawnBase() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AShipPawnBase, 766911039);
+	IMPLEMENT_CLASS(AShipPawnBase, 2851808020);
 	template<> LIGHTSHOT_API UClass* StaticClass<AShipPawnBase>()
 	{
 		return AShipPawnBase::StaticClass();

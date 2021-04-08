@@ -34,7 +34,7 @@ APlayerShipPawn::APlayerShipPawn()
 void APlayerShipPawn::BeginPlay()
 {
 	Super::BeginPlay();
-	
+	PlayerControllerRef = Cast<APlayerController>(GetController());
 }
 
 void APlayerShipPawn::GetInput()
@@ -42,19 +42,32 @@ void APlayerShipPawn::GetInput()
 	// Find movement direction
 	ForwardValue = GetInputAxisValue(MoveForwardBinding);
 	RightValue = GetInputAxisValue(MoveRightBinding);
-	UE_LOG(LogTemp, Warning, TEXT("Movement: %f %f"), ForwardValue, RightValue);
 
 	// Clamp max size so that (X=1, Y=1) doesn't cause faster movement in diagonal directions
-	MoveDirection = FVector(ForwardValue, RightValue, 0.f).GetClampedToMaxSize(1.0f);
+	MoveDirection = FVector(ForwardValue, RightValue, 0.f);//.GetClampedToMaxSize(1.0f);
 }
-
+void APlayerShipPawn::RotateMesh(FVector LookAtTarget)
+{
+	//Update TurretMesh rotation to face towards the LookAtTarget passed in 
+	//TurretMesh -> SetWorldRotation()
+	FVector LookAtTargetClean = FVector(LookAtTarget.X, LookAtTarget.Y, ShipMesh->GetComponentLocation().Z);
+	FVector StartLocation = ShipMesh->GetComponentLocation();
+	FRotator TurretRotation = FVector(LookAtTargetClean - StartLocation).Rotation();
+	ShipMesh->SetWorldRotation(TurretRotation);
+}
 // Called every frame
 void APlayerShipPawn::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 	GetInput();
 	MoveActorComponent->CalculateMovement(DeltaTime, MoveDirection);
+	if (PlayerControllerRef) {
+		FHitResult TraceHitResult;
+		PlayerControllerRef->GetHitResultUnderCursor(ECC_Visibility, false, TraceHitResult);
+		FVector HitLocation = TraceHitResult.ImpactPoint;
 
+		RotateMesh(HitLocation);
+	}
 }
 
 // Called to bind functionality to input

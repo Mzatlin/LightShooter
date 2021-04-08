@@ -25,8 +25,6 @@ protected:
 public:	
 	// Sets default values for this component's properties
 	UMoveActor();
-	// Called every frame
-	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 	void CalculateMovement(float DeltaSeconds, FVector Movement);
 		
 };

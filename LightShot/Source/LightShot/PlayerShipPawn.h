@@ -31,6 +31,7 @@ private:
 
 	float ForwardValue;
 	float RightValue;
+	APlayerController* PlayerControllerRef;
 	FVector MoveDirection;
 public:
 	// Sets default values for this pawn's properties
@@ -40,6 +41,7 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 	void GetInput();
+	void RotateMesh(FVector LookAtTarget);
 
 public:	
 	// Called every frame
