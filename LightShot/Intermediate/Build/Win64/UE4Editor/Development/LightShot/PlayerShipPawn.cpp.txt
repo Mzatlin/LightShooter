@@ -9,3 +9,5 @@ C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\Engine\Classes\GameFra
 C:\Program Files\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\SpringArmComponent.generated.h
 c:\users\michael\documents\github\lightshooter\lightshot\source\lightshot\MoveActor.h
 C:\Users\Michael\Documents\Github\LightShooter\LightShot\Intermediate\Build\Win64\UE4Editor\Inc\LightShot\MoveActor.generated.h
+c:\users\michael\documents\github\lightshooter\lightshot\source\lightshot\RotateActor.h
+C:\Users\Michael\Documents\Github\LightShooter\LightShot\Intermediate\Build\Win64\UE4Editor\Inc\LightShot\RotateActor.generated.h

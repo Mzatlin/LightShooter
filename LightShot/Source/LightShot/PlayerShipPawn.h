@@ -10,6 +10,7 @@
 class UCameraComponent;
 class USpringArmComponent;
 class UMoveActor;
+class URotateActor;
 
 UCLASS()
 class LIGHTSHOT_API APlayerShipPawn : public AShipPawnBase
@@ -24,6 +25,10 @@ private:
 	/** Player Ship Movement */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	UMoveActor* MoveActorComponent;
+
+	/**Player Ship Rotation*/
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
+	URotateActor* RotateActorComponent;
 
 	/** Camera boom positioning the camera above the character */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))

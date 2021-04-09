@@ -5,6 +5,7 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "Components/InputComponent.h"
 #include "MoveActor.h"
+#include "RotateActor.h"
 
 const FName APlayerShipPawn::MoveForwardBinding("MoveForward");
 const FName APlayerShipPawn::MoveRightBinding("MoveRight");
@@ -28,6 +29,7 @@ APlayerShipPawn::APlayerShipPawn()
 	CameraComponent->bUsePawnControlRotation = false;	// Camera does not rotate relative to arm
 
 	MoveActorComponent = CreateDefaultSubobject<UMoveActor>(TEXT("Movement Component"));
+	RotateActorComponent = CreateDefaultSubobject<URotateActor>(TEXT("Rotation Component"));
 }
 
 // Called when the game starts or when spawned
@@ -46,15 +48,7 @@ void APlayerShipPawn::GetInput()
 	// Clamp max size so that (X=1, Y=1) doesn't cause faster movement in diagonal directions
 	MoveDirection = FVector(ForwardValue, RightValue, 0.f);//.GetClampedToMaxSize(1.0f);
 }
-void APlayerShipPawn::RotateMesh(FVector LookAtTarget)
-{
-	//Update TurretMesh rotation to face towards the LookAtTarget passed in 
-	//TurretMesh -> SetWorldRotation()
-	FVector LookAtTargetClean = FVector(LookAtTarget.X, LookAtTarget.Y, ShipMesh->GetComponentLocation().Z);
-	FVector StartLocation = ShipMesh->GetComponentLocation();
-	FRotator TurretRotation = FVector(LookAtTargetClean - StartLocation).Rotation();
-	ShipMesh->SetWorldRotation(TurretRotation);
-}
+
 // Called every frame
 void APlayerShipPawn::Tick(float DeltaTime)
 {
@@ -66,7 +60,7 @@ void APlayerShipPawn::Tick(float DeltaTime)
 		PlayerControllerRef->GetHitResultUnderCursor(ECC_Visibility, false, TraceHitResult);
 		FVector HitLocation = TraceHitResult.ImpactPoint;
 
-		RotateMesh(HitLocation);
+		RotateActorComponent->RotateMesh(HitLocation, ShipMesh);
 	}
 }
 

@@ -3,7 +3,7 @@
   <ItemGroup>
     <None Include="..\..\LightShot.uproject" />
     <Filter Include="Source">
-      <UniqueIdentifier>{4011BFC3-EDBC-4639-BFC8-018B8A63177E}</UniqueIdentifier>
+      <UniqueIdentifier>{852BAB5D-1BC8-4686-9C30-497B519BF8ED}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\LightShot.Target.cs">
       <Filter>Source</Filter>
@@ -11,8 +11,9 @@
     <None Include="..\..\Source\LightShotEditor.Target.cs">
       <Filter>Source</Filter>
     </None>
+    <None Include="..\..\.gitignore" />
     <Filter Include="Config">
-      <UniqueIdentifier>{203B851C-BE74-4ECF-AF51-C638BDBBBE1D}</UniqueIdentifier>
+      <UniqueIdentifier>{E9307A15-C7B9-418E-A532-B7B418B4B8DB}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Config\DefaultEditor.ini">
       <Filter>Config</Filter>
@@ -30,7 +31,7 @@
       <Filter>Config</Filter>
     </None>
     <Filter Include="Source\LightShot">
-      <UniqueIdentifier>{5CAEACA4-C6B8-447C-87EF-2296073123FB}</UniqueIdentifier>
+      <UniqueIdentifier>{FFB5AA1C-D0E6-4252-BD81-753854661FC3}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\LightShot\LightShot.Build.cs">
       <Filter>Source\LightShot</Filter>
@@ -65,22 +66,16 @@
     <ClInclude Include="..\..\Source\LightShot\MoveActor.h">
       <Filter>Source\LightShot</Filter>
     </ClInclude>
-    <ClCompile Include="..\..\Source\LightShot\MoveActorBase.cpp">
-      <Filter>Source\LightShot</Filter>
-    </ClCompile>
-    <ClInclude Include="..\..\Source\LightShot\MoveActorBase.h">
-      <Filter>Source\LightShot</Filter>
-    </ClInclude>
-    <ClCompile Include="..\..\Source\LightShot\MovePlayerShip.cpp">
-      <Filter>Source\LightShot</Filter>
-    </ClCompile>
-    <ClInclude Include="..\..\Source\LightShot\MovePlayerShip.h">
-      <Filter>Source\LightShot</Filter>
-    </ClInclude>
     <ClCompile Include="..\..\Source\LightShot\PlayerShipPawn.cpp">
       <Filter>Source\LightShot</Filter>
     </ClCompile>
     <ClInclude Include="..\..\Source\LightShot\PlayerShipPawn.h">
+      <Filter>Source\LightShot</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\LightShot\RotateActor.cpp">
+      <Filter>Source\LightShot</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\LightShot\RotateActor.h">
       <Filter>Source\LightShot</Filter>
     </ClInclude>
     <ClCompile Include="..\..\Source\LightShot\ShipPawnBase.cpp">
