@@ -13,12 +13,6 @@ UCLASS()
 class LIGHTSHOT_API AShipPawnBase : public APawn
 {
 	GENERATED_BODY()
-
-private: 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
-	UCapsuleComponent* CollisionComponent;
-
-
 public:
 	// Sets default values for this pawn's properties
 	AShipPawnBase();
@@ -28,6 +22,10 @@ protected:
 	virtual void BeginPlay() override;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	UStaticMeshComponent* ShipMesh;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
+	UCapsuleComponent* CollisionComponent;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
+	USceneComponent* FireSpawnPoint;
 
 public:	
 	// Called every frame

@@ -59,8 +59,9 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(AShipPawnBase); \
 
 
 #define LightShot_Source_LightShot_ShipPawnBase_h_15_PRIVATE_PROPERTY_OFFSET \
+	FORCEINLINE static uint32 __PPO__ShipMesh() { return STRUCT_OFFSET(AShipPawnBase, ShipMesh); } \
 	FORCEINLINE static uint32 __PPO__CollisionComponent() { return STRUCT_OFFSET(AShipPawnBase, CollisionComponent); } \
-	FORCEINLINE static uint32 __PPO__ShipMesh() { return STRUCT_OFFSET(AShipPawnBase, ShipMesh); }
+	FORCEINLINE static uint32 __PPO__FireSpawnPoint() { return STRUCT_OFFSET(AShipPawnBase, FireSpawnPoint); }
 
 
 #define LightShot_Source_LightShot_ShipPawnBase_h_12_PROLOG
