@@ -11,3 +11,5 @@ c:\users\michael\documents\github\lightshooter\lightshot\source\lightshot\MoveAc
 C:\Users\Michael\Documents\Github\LightShooter\LightShot\Intermediate\Build\Win64\UE4Editor\Inc\LightShot\MoveActor.generated.h
 c:\users\michael\documents\github\lightshooter\lightshot\source\lightshot\RotateActor.h
 C:\Users\Michael\Documents\Github\LightShooter\LightShot\Intermediate\Build\Win64\UE4Editor\Inc\LightShot\RotateActor.generated.h
+c:\users\michael\documents\github\lightshooter\lightshot\source\lightshot\LightShotProjectile.h
+C:\Users\Michael\Documents\Github\LightShooter\LightShot\Intermediate\Build\Win64\UE4Editor\Inc\LightShot\LightShotProjectile.generated.h

@@ -46,7 +46,7 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 	void GetInput();
-	void RotateMesh(FVector LookAtTarget);
+	void FireWeapon();
 
 public:	
 	// Called every frame

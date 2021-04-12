@@ -6,6 +6,7 @@
 #include "Components/InputComponent.h"
 #include "MoveActor.h"
 #include "RotateActor.h"
+#include "LightShotProjectile.h"
 
 const FName APlayerShipPawn::MoveForwardBinding("MoveForward");
 const FName APlayerShipPawn::MoveRightBinding("MoveRight");
@@ -49,6 +50,14 @@ void APlayerShipPawn::GetInput()
 	MoveDirection = FVector(ForwardValue, RightValue, 0.f);//.GetClampedToMaxSize(1.0f);
 }
 
+void APlayerShipPawn::FireWeapon()
+{
+	FVector SpawnLocation = FireSpawnPoint->GetComponentLocation();
+	FRotator SpawnRotation = FireSpawnPoint->GetComponentRotation();
+	// spawn the projectile
+	GetWorld()->SpawnActor<ALightShotProjectile>(SpawnLocation, SpawnRotation);
+}
+
 // Called every frame
 void APlayerShipPawn::Tick(float DeltaTime)
 {
@@ -71,5 +80,6 @@ void APlayerShipPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComp
 	// set up gameplay key bindings
 	PlayerInputComponent->BindAxis(MoveForwardBinding);
 	PlayerInputComponent->BindAxis(MoveRightBinding);
+	PlayerInputComponent->BindAction("Fire", IE_Pressed, this, &APlayerShipPawn::FireWeapon);
 }
 
