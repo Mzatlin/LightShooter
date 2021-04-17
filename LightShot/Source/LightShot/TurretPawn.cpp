@@ -1,6 +1,6 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
+#include "RotateActor.h"
 #include "TurretPawn.h"
 
 // Sets default values
@@ -10,6 +10,7 @@ ATurretPawn::ATurretPawn()
 	PrimaryActorTick.bCanEverTick = true;
 	TurretMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Turret Mesh"));
 	TurretMesh->SetupAttachment(ShipMesh);
+	RotateActorComponent = CreateDefaultSubobject<URotateActor>(TEXT("Rotation Component"));
 }
 
 // Called when the game starts or when spawned
@@ -23,7 +24,10 @@ void ATurretPawn::BeginPlay()
 void ATurretPawn::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
+	if (PlayerPawn)
+	{
+		RotateActorComponent->RotateMesh(PlayerPawn->GetActorLocation(), TurretMesh);
+	}
 }
 
 // Called to bind functionality to input

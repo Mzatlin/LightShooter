@@ -6,6 +6,8 @@
 #include "GameFramework/Pawn.h"
 #include "TurretPawn.generated.h"
 
+class URotateActor;
+
 UCLASS()
 class LIGHTSHOT_API ATurretPawn : public AEnemyPawnBase
 {
@@ -20,6 +22,9 @@ protected:
 	virtual void BeginPlay() override;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	UStaticMeshComponent* TurretMesh;
+	/*Rotation*/
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
+	URotateActor* RotateActorComponent;
 
 public:	
 	// Called every frame
