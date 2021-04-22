@@ -22,8 +22,10 @@ AShipPawnBase::AShipPawnBase()
 	ShipMesh->SetupAttachment(RootComponent);
 	ShipMesh->SetCollisionProfileName(UCollisionProfile::Pawn_ProfileName);
 	ShipMesh->SetStaticMesh(ShipMeshComp.Object);
+	TurretMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Turret Mesh"));
+	TurretMesh->SetupAttachment(ShipMesh);
 	FireSpawnPoint = CreateDefaultSubobject<USceneComponent>(TEXT("Projectile Spawnpoint"));
-	FireSpawnPoint->SetupAttachment(ShipMesh);
+	FireSpawnPoint->SetupAttachment(TurretMesh);
 }
 
 // Called when the game starts or when spawned

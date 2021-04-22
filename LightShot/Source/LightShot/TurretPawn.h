@@ -13,6 +13,8 @@ class LIGHTSHOT_API ATurretPawn : public AEnemyPawnBase
 {
 	GENERATED_BODY()
 
+private:
+	FTimerHandle FireRateTimerHandle;
 public:
 	// Sets default values for this pawn's properties
 	ATurretPawn();
@@ -20,8 +22,8 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
-	UStaticMeshComponent* TurretMesh;
+	virtual void CheckAttackCondition() override;
+	virtual void Attack() override;
 	/*Rotation*/
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	URotateActor* RotateActorComponent;
@@ -29,7 +31,6 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 

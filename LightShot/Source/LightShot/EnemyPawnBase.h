@@ -19,6 +19,8 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+	virtual void CheckAttackCondition();
+	virtual void Attack();
 	APawn* PlayerPawn;
 
 public:	

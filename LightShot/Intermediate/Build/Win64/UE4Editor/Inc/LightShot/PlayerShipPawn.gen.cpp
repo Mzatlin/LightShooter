@@ -143,7 +143,7 @@ void EmptyLinkFunctionForGeneratedCodePlayerShipPawn() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(APlayerShipPawn, 2183087073);
+	IMPLEMENT_CLASS(APlayerShipPawn, 1405013090);
 	template<> LIGHTSHOT_API UClass* StaticClass<APlayerShipPawn>()
 	{
 		return APlayerShipPawn::StaticClass();

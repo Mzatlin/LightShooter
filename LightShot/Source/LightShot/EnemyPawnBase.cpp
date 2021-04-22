@@ -18,6 +18,14 @@ void AEnemyPawnBase::BeginPlay()
 	PlayerPawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
 }
 
+void AEnemyPawnBase::CheckAttackCondition()
+{
+}
+
+void AEnemyPawnBase::Attack()
+{
+}
+
 // Called every frame
 void AEnemyPawnBase::Tick(float DeltaTime)
 {
