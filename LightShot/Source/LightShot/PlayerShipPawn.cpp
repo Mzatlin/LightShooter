@@ -47,7 +47,8 @@ void APlayerShipPawn::GetInput()
 	RightValue = GetInputAxisValue(MoveRightBinding);
 
 	// Clamp max size so that (X=1, Y=1) doesn't cause faster movement in diagonal directions
-	MoveDirection = FVector(ForwardValue, RightValue, 0.f);//.GetClampedToMaxSize(1.0f);
+	MoveDirection = FVector(ForwardValue, RightValue, 0.f).GetClampedToMaxSize(1.0f);
+	ShipMesh->SetWorldRotation(MoveDirection.Rotation()); //ToDo: Add a Lerp to this to not make it so snappy 
 }
 
 void APlayerShipPawn::FireWeapon()
@@ -69,7 +70,7 @@ void APlayerShipPawn::Tick(float DeltaTime)
 		PlayerControllerRef->GetHitResultUnderCursor(ECC_Visibility, false, TraceHitResult);
 		FVector HitLocation = TraceHitResult.ImpactPoint;
 
-		RotateActorComponent->RotateMesh(HitLocation, ShipMesh);
+		RotateActorComponent->RotateMesh(HitLocation, TurretMesh);
 	}
 }
 

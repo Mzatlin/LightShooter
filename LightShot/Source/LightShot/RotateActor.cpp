@@ -15,8 +15,7 @@ URotateActor::URotateActor()
 
 void URotateActor::RotateMesh(FVector LookAtTarget, UStaticMeshComponent* RotateMesh)
 {
-	//Update TurretMesh rotation to face towards the LookAtTarget passed in 
-	//TurretMesh -> SetWorldRotation()
+	//Update rotation to face towards the Target passed in 
 	FVector LookAtTargetClean = FVector(LookAtTarget.X, LookAtTarget.Y, RotateMesh->GetComponentLocation().Z);
 	FVector StartLocation = RotateMesh->GetComponentLocation();
 	FRotator TurretRotation = FVector(LookAtTargetClean - StartLocation).Rotation();
