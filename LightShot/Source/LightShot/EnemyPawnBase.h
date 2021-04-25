@@ -21,6 +21,7 @@ protected:
 	virtual void BeginPlay() override;
 	virtual void CheckAttackCondition();
 	virtual void Attack();
+	float GetPlayerDistance();
 	APawn* PlayerPawn;
 
 public:	

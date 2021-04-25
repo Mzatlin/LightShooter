@@ -26,6 +26,13 @@ void AEnemyPawnBase::Attack()
 {
 }
 
+float AEnemyPawnBase::GetPlayerDistance()
+{
+	if (!PlayerPawn)
+		return 0.f;
+	return FVector::Dist(PlayerPawn->GetActorLocation(), GetActorLocation());
+}
+
 // Called every frame
 void AEnemyPawnBase::Tick(float DeltaTime)
 {

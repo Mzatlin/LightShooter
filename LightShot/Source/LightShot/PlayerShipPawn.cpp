@@ -49,6 +49,7 @@ void APlayerShipPawn::GetInput()
 	// Clamp max size so that (X=1, Y=1) doesn't cause faster movement in diagonal directions
 	MoveDirection = FVector(ForwardValue, RightValue, 0.f).GetClampedToMaxSize(1.0f);
 	ShipMesh->SetWorldRotation(MoveDirection.Rotation()); //ToDo: Add a Lerp to this to not make it so snappy 
+	
 }
 
 void APlayerShipPawn::FireWeapon()
