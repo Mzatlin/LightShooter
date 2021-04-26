@@ -22,6 +22,8 @@ protected:
 	virtual void CheckAttackCondition();
 	virtual void Attack();
 	float GetPlayerDistance();
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Enemy Settings", meta = (AllowPrivateAccess = "true"))
+	float aggroDistance = 3000;
 	APawn* PlayerPawn;
 
 public:	

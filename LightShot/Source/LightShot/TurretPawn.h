@@ -15,6 +15,8 @@ class LIGHTSHOT_API ATurretPawn : public AEnemyPawnBase
 
 private:
 	FTimerHandle FireRateTimerHandle;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Enemy Settings", meta = (AllowPrivateAccess = "true"))
+	float fireRate = 1.f;
 public:
 	// Sets default values for this pawn's properties
 	ATurretPawn();

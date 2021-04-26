@@ -17,12 +17,12 @@ ATurretPawn::ATurretPawn()
 void ATurretPawn::BeginPlay()
 {
 	Super::BeginPlay();
-	GetWorld()->GetTimerManager().SetTimer(FireRateTimerHandle, this, &ATurretPawn::CheckAttackCondition, 1.f, true);
+	GetWorld()->GetTimerManager().SetTimer(FireRateTimerHandle, this, &ATurretPawn::CheckAttackCondition, fireRate, true);
 }
 
 void ATurretPawn::CheckAttackCondition()
 {
-	if(PlayerPawn && GetPlayerDistance() < 3000.f)
+	if(PlayerPawn && GetPlayerDistance() < aggroDistance)
 		Attack();
 }
 
@@ -30,7 +30,7 @@ void ATurretPawn::CheckAttackCondition()
 void ATurretPawn::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	if (PlayerPawn && GetPlayerDistance() < 3000.f)
+	if (PlayerPawn && GetPlayerDistance() < aggroDistance)
 
 		RotateActorComponent->RotateMesh(PlayerPawn->GetActorLocation(), TurretMesh);
 }
