@@ -13,7 +13,7 @@ UCLASS(config=Game)
 class ALightShotProjectile : public AActor
 {
 	GENERATED_BODY()
-
+private:
 	/** Sphere collision component */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Projectile, meta = (AllowPrivateAccess = "true"))
 	UStaticMeshComponent* ProjectileMesh;
@@ -21,6 +21,12 @@ class ALightShotProjectile : public AActor
 	/** Projectile movement component */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Movement, meta = (AllowPrivateAccess = "true"))
 	UProjectileMovementComponent* ProjectileMovement;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Damage", meta = (AllowPrivateAccess = "true"))
+	float Damage = 50;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Damage")
+	TSubclassOf<UDamageType> DamageType;
 
 public:
 	ALightShotProjectile();

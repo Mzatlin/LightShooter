@@ -76,7 +76,9 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(ALightShotProjectile); \
 
 #define LightShot_Source_LightShot_LightShotProjectile_h_15_PRIVATE_PROPERTY_OFFSET \
 	FORCEINLINE static uint32 __PPO__ProjectileMesh() { return STRUCT_OFFSET(ALightShotProjectile, ProjectileMesh); } \
-	FORCEINLINE static uint32 __PPO__ProjectileMovement() { return STRUCT_OFFSET(ALightShotProjectile, ProjectileMovement); }
+	FORCEINLINE static uint32 __PPO__ProjectileMovement() { return STRUCT_OFFSET(ALightShotProjectile, ProjectileMovement); } \
+	FORCEINLINE static uint32 __PPO__Damage() { return STRUCT_OFFSET(ALightShotProjectile, Damage); } \
+	FORCEINLINE static uint32 __PPO__DamageType() { return STRUCT_OFFSET(ALightShotProjectile, DamageType); }
 
 
 #define LightShot_Source_LightShot_LightShotProjectile_h_12_PROLOG

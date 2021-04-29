@@ -5,6 +5,7 @@
 #include "UObject/ConstructorHelpers.h"
 #include "Components/StaticMeshComponent.h"
 #include "GameFramework/ProjectileMovementComponent.h"
+#include "Kismet/GameplayStatics.h"
 #include "Engine/StaticMesh.h"
 
 ALightShotProjectile::ALightShotProjectile() 
@@ -35,10 +36,20 @@ ALightShotProjectile::ALightShotProjectile()
 
 void ALightShotProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
 {
-	// Only add impulse and destroy projectile if we hit a physics
-	if ((OtherActor != nullptr) && (OtherActor != this) && (OtherComp != nullptr) && OtherComp->IsSimulatingPhysics())
+	
+	AActor* OwningActor = GetOwner();
+
+	if ((OtherActor != nullptr) && (OtherActor != this) && (OtherComp != nullptr))
 	{
-		OtherComp->AddImpulseAtLocation(GetVelocity() * 20.0f, GetActorLocation());
+		if(!OwningActor)
+		{
+			//Add Damage Code Here
+		}
+		// Only add impulse and destroy projectile if we hit a physics
+		if (OtherComp->IsSimulatingPhysics()) 
+		{
+			OtherComp->AddImpulseAtLocation(GetVelocity() * 20.0f, GetActorLocation());
+		}
 	}
 
 	Destroy();
