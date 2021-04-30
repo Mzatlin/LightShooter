@@ -7,6 +7,8 @@
 #include "GameFramework/Pawn.h"
 #include "EnemyPawnBase.generated.h"
 
+class ALightShotProjectile;
+
 UCLASS()
 class LIGHTSHOT_API AEnemyPawnBase : public AShipPawnBase
 {
@@ -24,6 +26,8 @@ protected:
 	float GetPlayerDistance();
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Enemy Settings", meta = (AllowPrivateAccess = "true"))
 	float aggroDistance = 3000;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Projectile Type", meta = (AllowPrivateAccess = "true"))
+	TSubclassOf<ALightShotProjectile> ProjectileClass;
 	APawn* PlayerPawn;
 
 public:	

@@ -11,6 +11,8 @@ class UCameraComponent;
 class USpringArmComponent;
 class UMoveActor;
 class URotateActor;
+class ALightShotProjectile;
+
 
 UCLASS()
 class LIGHTSHOT_API APlayerShipPawn : public AShipPawnBase
@@ -33,6 +35,9 @@ private:
 	/** Camera boom positioning the camera above the character */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	USpringArmComponent* CameraBoom;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Projectile Type", meta = (AllowPrivateAccess = "true"))
+	TSubclassOf<ALightShotProjectile> ProjectileClass;
 
 	float ForwardValue;
 	float RightValue;

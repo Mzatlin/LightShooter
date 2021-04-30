@@ -5,6 +5,7 @@
 #include "Components/StaticMeshComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "Engine/CollisionProfile.h"
+#include "LightShot/HealthController.h"
 #include "Engine/StaticMesh.h"
 #include "UObject/ConstructorHelpers.h"
 
@@ -26,6 +27,7 @@ AShipPawnBase::AShipPawnBase()
 	TurretMesh->SetupAttachment(ShipMesh);
 	FireSpawnPoint = CreateDefaultSubobject<USceneComponent>(TEXT("Projectile Spawnpoint"));
 	FireSpawnPoint->SetupAttachment(TurretMesh);
+	Health = CreateDefaultSubobject<UHealthController>(TEXT("Health Controller"));
 }
 
 // Called when the game starts or when spawned

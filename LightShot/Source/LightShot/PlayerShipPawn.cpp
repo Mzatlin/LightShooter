@@ -57,7 +57,7 @@ void APlayerShipPawn::FireWeapon()
 	FVector SpawnLocation = FireSpawnPoint->GetComponentLocation();
 	FRotator SpawnRotation = FireSpawnPoint->GetComponentRotation();
 	// spawn the projectile
-	GetWorld()->SpawnActor<ALightShotProjectile>(SpawnLocation, SpawnRotation);
+	GetWorld()->SpawnActor<ALightShotProjectile>(ProjectileClass, SpawnLocation, SpawnRotation);
 }
 
 // Called every frame

@@ -16,7 +16,7 @@ ALightShotProjectile::ALightShotProjectile()
 	// Create mesh component for the projectile sphere
 	ProjectileMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ProjectileMesh0"));
 	ProjectileMesh->SetStaticMesh(ProjectileMeshAsset.Object);
-	ProjectileMesh->SetupAttachment(RootComponent);
+	//ProjectileMesh->SetupAttachment(RootComponent);
 	ProjectileMesh->BodyInstance.SetCollisionProfileName("Projectile");
 	ProjectileMesh->OnComponentHit.AddDynamic(this, &ALightShotProjectile::OnHit);		// set up a notification for when this component hits something
 	RootComponent = ProjectileMesh;
@@ -36,14 +36,15 @@ ALightShotProjectile::ALightShotProjectile()
 
 void ALightShotProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
 {
-	
 	AActor* OwningActor = GetOwner();
 
 	if ((OtherActor != nullptr) && (OtherActor != this) && (OtherComp != nullptr))
 	{
-		if(!OwningActor)
+		if(OwningActor && OtherActor != OwningActor)
 		{
+			UE_LOG(LogTemp, Warning, TEXT("Hit"));
 			//Add Damage Code Here
+			UGameplayStatics::ApplyDamage(OtherActor, Damage, OwningActor->GetInstigatorController(), this, DamageType);
 		}
 		// Only add impulse and destroy projectile if we hit a physics
 		if (OtherComp->IsSimulatingPhysics()) 

@@ -8,6 +8,7 @@
 
 class UCapsuleComponent;
 class UStaticMeshComponent;
+class UHealthController;
 
 UCLASS()
 class LIGHTSHOT_API AShipPawnBase : public APawn
@@ -28,6 +29,8 @@ protected:
 	USceneComponent* FireSpawnPoint;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	UStaticMeshComponent* TurretMesh;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
+	UHealthController* Health;
 
 public:	
 	// Called every frame

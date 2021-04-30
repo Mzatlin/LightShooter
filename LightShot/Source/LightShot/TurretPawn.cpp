@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include "RotateActor.h"
 #include "TurretPawn.h"
+#include "RotateActor.h"
 #include "LightShotProjectile.h"
 #include "Kismet/GameplayStatics.h"
 
@@ -40,7 +40,7 @@ void ATurretPawn::Attack()
 	FVector SpawnLocation = FireSpawnPoint->GetComponentLocation();
 	FRotator SpawnRotation = FireSpawnPoint->GetComponentRotation();
 	// spawn the projectile
-	GetWorld()->SpawnActor<ALightShotProjectile>(SpawnLocation, SpawnRotation);
+	GetWorld()->SpawnActor<ALightShotProjectile>(ProjectileClass, SpawnLocation, SpawnRotation);
 }
 
 // Called to bind functionality to input

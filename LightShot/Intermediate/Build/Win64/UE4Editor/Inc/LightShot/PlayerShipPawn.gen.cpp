@@ -21,6 +21,8 @@ void EmptyLinkFunctionForGeneratedCodePlayerShipPawn() {}
 	LIGHTSHOT_API UClass* Z_Construct_UClass_UMoveActor_NoRegister();
 	LIGHTSHOT_API UClass* Z_Construct_UClass_URotateActor_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_USpringArmComponent_NoRegister();
+	COREUOBJECT_API UClass* Z_Construct_UClass_UClass();
+	LIGHTSHOT_API UClass* Z_Construct_UClass_ALightShotProjectile_NoRegister();
 // End Cross Module References
 	void APlayerShipPawn::StaticRegisterNativesAPlayerShipPawn()
 	{
@@ -51,6 +53,10 @@ void EmptyLinkFunctionForGeneratedCodePlayerShipPawn() {}
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_CameraBoom_MetaData[];
 #endif
 		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_CameraBoom;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_ProjectileClass_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FClassPropertyParams NewProp_ProjectileClass;
 		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
 		static const UE4CodeGen_Private::FClassParams ClassParams;
@@ -110,11 +116,20 @@ void EmptyLinkFunctionForGeneratedCodePlayerShipPawn() {}
 	};
 #endif
 	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_APlayerShipPawn_Statics::NewProp_CameraBoom = { "CameraBoom", nullptr, (EPropertyFlags)0x00400000000a001d, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(APlayerShipPawn, CameraBoom), Z_Construct_UClass_USpringArmComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_APlayerShipPawn_Statics::NewProp_CameraBoom_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_APlayerShipPawn_Statics::NewProp_CameraBoom_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_APlayerShipPawn_Statics::NewProp_ProjectileClass_MetaData[] = {
+		{ "AllowPrivateAccess", "true" },
+		{ "Category", "Projectile Type" },
+		{ "ModuleRelativePath", "PlayerShipPawn.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FClassPropertyParams Z_Construct_UClass_APlayerShipPawn_Statics::NewProp_ProjectileClass = { "ProjectileClass", nullptr, (EPropertyFlags)0x0044000000000015, UE4CodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(APlayerShipPawn, ProjectileClass), Z_Construct_UClass_ALightShotProjectile_NoRegister, Z_Construct_UClass_UClass, METADATA_PARAMS(Z_Construct_UClass_APlayerShipPawn_Statics::NewProp_ProjectileClass_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_APlayerShipPawn_Statics::NewProp_ProjectileClass_MetaData)) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_APlayerShipPawn_Statics::PropPointers[] = {
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlayerShipPawn_Statics::NewProp_CameraComponent,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlayerShipPawn_Statics::NewProp_MoveActorComponent,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlayerShipPawn_Statics::NewProp_RotateActorComponent,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlayerShipPawn_Statics::NewProp_CameraBoom,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlayerShipPawn_Statics::NewProp_ProjectileClass,
 	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_APlayerShipPawn_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<APlayerShipPawn>::IsAbstract,
@@ -143,7 +158,7 @@ void EmptyLinkFunctionForGeneratedCodePlayerShipPawn() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(APlayerShipPawn, 1405013090);
+	IMPLEMENT_CLASS(APlayerShipPawn, 2041880047);
 	template<> LIGHTSHOT_API UClass* StaticClass<APlayerShipPawn>()
 	{
 		return APlayerShipPawn::StaticClass();
