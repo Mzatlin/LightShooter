@@ -10,19 +10,20 @@
 
 ALightShotProjectile::ALightShotProjectile() 
 {
+	PrimaryActorTick.bCanEverTick = false;
 	// Static reference to the mesh to use for the projectile
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> ProjectileMeshAsset(TEXT("/Game/TwinStick/Meshes/TwinStickProjectile.TwinStickProjectile"));
 
 	// Create mesh component for the projectile sphere
-	ProjectileMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ProjectileMesh0"));
+	ProjectileMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ProjectileMesh"));
 	ProjectileMesh->SetStaticMesh(ProjectileMeshAsset.Object);
-	//ProjectileMesh->SetupAttachment(RootComponent);
+	ProjectileMesh->SetupAttachment(RootComponent);
 	ProjectileMesh->BodyInstance.SetCollisionProfileName("Projectile");
 	ProjectileMesh->OnComponentHit.AddDynamic(this, &ALightShotProjectile::OnHit);		// set up a notification for when this component hits something
 	RootComponent = ProjectileMesh;
 
 	// Use a ProjectileMovementComponent to govern this projectile's movement
-	ProjectileMovement = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("ProjectileMovement0"));
+	ProjectileMovement = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("ProjectileMovement"));
 	ProjectileMovement->UpdatedComponent = ProjectileMesh;
 	ProjectileMovement->InitialSpeed = 3000.f;
 	ProjectileMovement->MaxSpeed = 3000.f;
@@ -42,7 +43,6 @@ void ALightShotProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActo
 	{
 		if(OwningActor && OtherActor != OwningActor)
 		{
-			UE_LOG(LogTemp, Warning, TEXT("Hit"));
 			//Add Damage Code Here
 			UGameplayStatics::ApplyDamage(OtherActor, Damage, OwningActor->GetInstigatorController(), this, DamageType);
 		}

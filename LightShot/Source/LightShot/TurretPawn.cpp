@@ -2,6 +2,7 @@
 
 #include "TurretPawn.h"
 #include "RotateActor.h"
+#include "BaseProjectile.h"
 #include "LightShotProjectile.h"
 #include "Kismet/GameplayStatics.h"
 
@@ -40,7 +41,10 @@ void ATurretPawn::Attack()
 	FVector SpawnLocation = FireSpawnPoint->GetComponentLocation();
 	FRotator SpawnRotation = FireSpawnPoint->GetComponentRotation();
 	// spawn the projectile
-	GetWorld()->SpawnActor<ALightShotProjectile>(ProjectileClass, SpawnLocation, SpawnRotation);
+	if (ProjectileClass) {
+		ALightShotProjectile* TempProjectile = GetWorld()->SpawnActor<ALightShotProjectile>(ProjectileClass, SpawnLocation, SpawnRotation);
+		TempProjectile->SetOwner(this);
+	}
 }
 
 // Called to bind functionality to input

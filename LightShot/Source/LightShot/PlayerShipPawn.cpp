@@ -57,7 +57,13 @@ void APlayerShipPawn::FireWeapon()
 	FVector SpawnLocation = FireSpawnPoint->GetComponentLocation();
 	FRotator SpawnRotation = FireSpawnPoint->GetComponentRotation();
 	// spawn the projectile
-	GetWorld()->SpawnActor<ALightShotProjectile>(ProjectileClass, SpawnLocation, SpawnRotation);
+	if (ProjectileClass) {
+		ALightShotProjectile* TempProjectile = GetWorld()->SpawnActor<ALightShotProjectile>(ProjectileClass, SpawnLocation, SpawnRotation);
+		TempProjectile->SetOwner(this);
+	}
+	else {
+		UE_LOG(LogTemp, Warning, TEXT("No Projectile Class Found"));
+	}
 }
 
 // Called every frame

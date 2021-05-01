@@ -27,6 +27,7 @@ void UHealthController::TakeDamage(AActor * DamagedActor, float Damage, const UD
 	if (Health > 0 && Damage > 0) 
 	{
 		Health = FMath::Clamp(Health - Damage, 0.0f, DefaultHealth);
+		UE_LOG(LogTemp, Warning, TEXT("Health: %f"), Health);
 		if (Health <= 0) 
 		{
 			UE_LOG(LogTemp, Warning, TEXT("You Died"));
