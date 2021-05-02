@@ -2,7 +2,6 @@
 
 #include "TurretPawn.h"
 #include "RotateActor.h"
-#include "BaseProjectile.h"
 #include "LightShotProjectile.h"
 #include "Kismet/GameplayStatics.h"
 
