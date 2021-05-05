@@ -9,3 +9,5 @@ C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\Engine\Classes\Engine/
 C:\Program Files\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\CollisionProfile.generated.h
 C:\Users\Michael\Documents\Github\LightShooter\LightShot\Source\LightShot/HealthController.h
 C:\Users\Michael\Documents\Github\LightShooter\LightShot\Intermediate\Build\Win64\UE4Editor\Inc\LightShot\HealthController.generated.h
+c:\users\michael\documents\github\lightshooter\lightshot\source\lightshot\RotateActor.h
+C:\Users\Michael\Documents\Github\LightShooter\LightShot\Intermediate\Build\Win64\UE4Editor\Inc\LightShot\RotateActor.generated.h

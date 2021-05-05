@@ -7,6 +7,7 @@
 #include "MoveActor.h"
 #include "RotateActor.h"
 #include "LightShotProjectile.h"
+#include "LightShot/ShipPawnBase.h"
 
 const FName APlayerShipPawn::MoveForwardBinding("MoveForward");
 const FName APlayerShipPawn::MoveRightBinding("MoveRight");
@@ -30,7 +31,6 @@ APlayerShipPawn::APlayerShipPawn()
 	CameraComponent->bUsePawnControlRotation = false;	// Camera does not rotate relative to arm
 
 	MoveActorComponent = CreateDefaultSubobject<UMoveActor>(TEXT("Movement Component"));
-	RotateActorComponent = CreateDefaultSubobject<URotateActor>(TEXT("Rotation Component"));
 }
 
 // Called when the game starts or when spawned
@@ -76,7 +76,6 @@ void APlayerShipPawn::Tick(float DeltaTime)
 		FHitResult TraceHitResult;
 		PlayerControllerRef->GetHitResultUnderCursor(ECC_Visibility, false, TraceHitResult);
 		FVector HitLocation = TraceHitResult.ImpactPoint;
-
 		RotateActorComponent->RotateMesh(HitLocation, TurretMesh);
 	}
 }

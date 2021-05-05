@@ -7,6 +7,7 @@
 #include "Engine/CollisionProfile.h"
 #include "LightShot/HealthController.h"
 #include "Engine/StaticMesh.h"
+#include "RotateActor.h"
 #include "UObject/ConstructorHelpers.h"
 
 // Sets default values
@@ -27,6 +28,7 @@ AShipPawnBase::AShipPawnBase()
 	TurretMesh->SetupAttachment(ShipMesh);
 	FireSpawnPoint = CreateDefaultSubobject<USceneComponent>(TEXT("Projectile Spawnpoint"));
 	FireSpawnPoint->SetupAttachment(TurretMesh);
+	RotateActorComponent = CreateDefaultSubobject<URotateActor>(TEXT("Rotation Component"));
 	Health = CreateDefaultSubobject<UHealthController>(TEXT("Health Controller"));
 }
 
@@ -44,10 +46,4 @@ void AShipPawnBase::Tick(float DeltaTime)
 
 }
 
-// Called to bind functionality to input
-void AShipPawnBase::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
-{
-	Super::SetupPlayerInputComponent(PlayerInputComponent);
-
-}
 

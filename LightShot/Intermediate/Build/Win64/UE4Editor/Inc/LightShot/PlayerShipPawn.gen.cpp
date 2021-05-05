@@ -19,7 +19,6 @@ void EmptyLinkFunctionForGeneratedCodePlayerShipPawn() {}
 	UPackage* Z_Construct_UPackage__Script_LightShot();
 	ENGINE_API UClass* Z_Construct_UClass_UCameraComponent_NoRegister();
 	LIGHTSHOT_API UClass* Z_Construct_UClass_UMoveActor_NoRegister();
-	LIGHTSHOT_API UClass* Z_Construct_UClass_URotateActor_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_USpringArmComponent_NoRegister();
 	COREUOBJECT_API UClass* Z_Construct_UClass_UClass();
 	LIGHTSHOT_API UClass* Z_Construct_UClass_ALightShotProjectile_NoRegister();
@@ -45,10 +44,6 @@ void EmptyLinkFunctionForGeneratedCodePlayerShipPawn() {}
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_MoveActorComponent_MetaData[];
 #endif
 		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_MoveActorComponent;
-#if WITH_METADATA
-		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_RotateActorComponent_MetaData[];
-#endif
-		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_RotateActorComponent;
 #if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_CameraBoom_MetaData[];
 #endif
@@ -95,17 +90,6 @@ void EmptyLinkFunctionForGeneratedCodePlayerShipPawn() {}
 #endif
 	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_APlayerShipPawn_Statics::NewProp_MoveActorComponent = { "MoveActorComponent", nullptr, (EPropertyFlags)0x00400000000a001d, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(APlayerShipPawn, MoveActorComponent), Z_Construct_UClass_UMoveActor_NoRegister, METADATA_PARAMS(Z_Construct_UClass_APlayerShipPawn_Statics::NewProp_MoveActorComponent_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_APlayerShipPawn_Statics::NewProp_MoveActorComponent_MetaData)) };
 #if WITH_METADATA
-	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_APlayerShipPawn_Statics::NewProp_RotateActorComponent_MetaData[] = {
-		{ "AllowPrivateAccess", "true" },
-		{ "Category", "Components" },
-		{ "Comment", "/**Player Ship Rotation*/" },
-		{ "EditInline", "true" },
-		{ "ModuleRelativePath", "PlayerShipPawn.h" },
-		{ "ToolTip", "Player Ship Rotation" },
-	};
-#endif
-	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_APlayerShipPawn_Statics::NewProp_RotateActorComponent = { "RotateActorComponent", nullptr, (EPropertyFlags)0x00400000000a001d, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(APlayerShipPawn, RotateActorComponent), Z_Construct_UClass_URotateActor_NoRegister, METADATA_PARAMS(Z_Construct_UClass_APlayerShipPawn_Statics::NewProp_RotateActorComponent_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_APlayerShipPawn_Statics::NewProp_RotateActorComponent_MetaData)) };
-#if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_APlayerShipPawn_Statics::NewProp_CameraBoom_MetaData[] = {
 		{ "AllowPrivateAccess", "true" },
 		{ "Category", "Components" },
@@ -127,7 +111,6 @@ void EmptyLinkFunctionForGeneratedCodePlayerShipPawn() {}
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_APlayerShipPawn_Statics::PropPointers[] = {
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlayerShipPawn_Statics::NewProp_CameraComponent,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlayerShipPawn_Statics::NewProp_MoveActorComponent,
-		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlayerShipPawn_Statics::NewProp_RotateActorComponent,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlayerShipPawn_Statics::NewProp_CameraBoom,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlayerShipPawn_Statics::NewProp_ProjectileClass,
 	};
@@ -158,7 +141,7 @@ void EmptyLinkFunctionForGeneratedCodePlayerShipPawn() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(APlayerShipPawn, 2041880047);
+	IMPLEMENT_CLASS(APlayerShipPawn, 1122810063);
 	template<> LIGHTSHOT_API UClass* StaticClass<APlayerShipPawn>()
 	{
 		return APlayerShipPawn::StaticClass();

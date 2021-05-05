@@ -9,6 +9,7 @@
 class UCapsuleComponent;
 class UStaticMeshComponent;
 class UHealthController;
+class URotateActor;
 
 UCLASS()
 class LIGHTSHOT_API AShipPawnBase : public APawn
@@ -31,13 +32,12 @@ protected:
 	UStaticMeshComponent* TurretMesh;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	UHealthController* Health;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
+	URotateActor* RotateActorComponent;
 
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-
-	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 	/** Returns ShipMeshComponent subobject **/
 	FORCEINLINE class UStaticMeshComponent* GetShipMeshComponent() const { return ShipMesh; }
 };

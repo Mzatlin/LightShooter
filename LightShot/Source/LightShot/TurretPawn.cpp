@@ -10,7 +10,6 @@ ATurretPawn::ATurretPawn()
 {
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-	RotateActorComponent = CreateDefaultSubobject<URotateActor>(TEXT("Rotation Component"));
 }
 
 // Called when the game starts or when spawned
@@ -31,7 +30,6 @@ void ATurretPawn::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 	if (PlayerPawn && GetPlayerDistance() < aggroDistance)
-
 		RotateActorComponent->RotateMesh(PlayerPawn->GetActorLocation(), TurretMesh);
 }
 
@@ -44,12 +42,5 @@ void ATurretPawn::Attack()
 		ALightShotProjectile* TempProjectile = GetWorld()->SpawnActor<ALightShotProjectile>(ProjectileClass, SpawnLocation, SpawnRotation);
 		TempProjectile->SetOwner(this);
 	}
-}
-
-// Called to bind functionality to input
-void ATurretPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
-{
-	Super::SetupPlayerInputComponent(PlayerInputComponent);
-
 }
 

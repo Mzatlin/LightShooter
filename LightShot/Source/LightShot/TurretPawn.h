@@ -6,8 +6,6 @@
 #include "GameFramework/Pawn.h"
 #include "TurretPawn.generated.h"
 
-class URotateActor;
-
 UCLASS()
 class LIGHTSHOT_API ATurretPawn : public AEnemyPawnBase
 {
@@ -25,15 +23,9 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 	virtual void CheckAttackCondition() override;
-	virtual void Attack() override;
-	/*Rotation*/
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
-	URotateActor* RotateActorComponent;
+	void Attack() override;
 
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-
 };

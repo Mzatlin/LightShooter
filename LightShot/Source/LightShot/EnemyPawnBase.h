@@ -21,8 +21,8 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-	virtual void CheckAttackCondition();
-	virtual void Attack();
+	virtual void CheckAttackCondition() PURE_VIRTUAL(AEnemyPawnBase::CheckAttackCondition,);
+	virtual void Attack() PURE_VIRTUAL(AEnemyPawnBase::Attack,);
 	float GetPlayerDistance();
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Enemy Settings", meta = (AllowPrivateAccess = "true"))
 	float aggroDistance = 3000;
@@ -33,8 +33,4 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-
-	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-
 };

@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "EnemyPawnBase.h"
+#include "ShipPawnBase.h"
 #include "Kismet/GameplayStatics.h"
 
 // Sets default values
@@ -17,14 +18,6 @@ void AEnemyPawnBase::BeginPlay()
 	PlayerPawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
 }
 
-void AEnemyPawnBase::CheckAttackCondition()
-{
-}
-
-void AEnemyPawnBase::Attack()
-{
-}
-
 float AEnemyPawnBase::GetPlayerDistance()
 {
 	if (!PlayerPawn)
@@ -37,11 +30,5 @@ void AEnemyPawnBase::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-}
-
-// Called to bind functionality to input
-void AEnemyPawnBase::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
-{
-	Super::SetupPlayerInputComponent(PlayerInputComponent);
 }
 
