@@ -2,6 +2,8 @@
 
 #include "LightShotGameMode.h"
 #include "LightShotPawn.h"
+#include "ShipPawnBase.h"
+#include "PlayerShipPawn.h"
 
 ALightShotGameMode::ALightShotGameMode()
 {
@@ -9,3 +11,17 @@ ALightShotGameMode::ALightShotGameMode()
 	DefaultPawnClass = ALightShotPawn::StaticClass();
 }
 
+void ALightShotGameMode::HandleShipDestroyed(AActor * ship)
+{
+
+	AShipPawnBase* shipActor = Cast<AShipPawnBase>(ship);
+	if (!shipActor)
+		return;
+	
+	shipActor->KillShip();	
+
+	APlayerShipPawn* player = Cast<APlayerShipPawn>(ship);
+	if (player) {
+		UE_LOG(LogTemp, Warning, TEXT("The Player Has Died"));
+	}
+}

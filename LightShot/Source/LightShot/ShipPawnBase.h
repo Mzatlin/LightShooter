@@ -18,10 +18,12 @@ class LIGHTSHOT_API AShipPawnBase : public APawn
 public:
 	// Sets default values for this pawn's properties
 	AShipPawnBase();
+	void KillShip();
 
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+	virtual void HandleDeath() PURE_VIRTUAL(AShipPawnBase::HandleDeath(), );
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	UStaticMeshComponent* ShipMesh;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))

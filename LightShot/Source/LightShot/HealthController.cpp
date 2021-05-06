@@ -2,6 +2,8 @@
 
 
 #include "HealthController.h"
+#include "MainGameMode.h"
+#include "Kismet/GameplayStatics.h"
 
 // Sets default values for this component's properties
 UHealthController::UHealthController()
@@ -19,6 +21,7 @@ void UHealthController::BeginPlay()
 {
 	Super::BeginPlay();
 	Health = DefaultHealth;
+	GameMode= Cast<AMainGameMode>(UGameplayStatics::GetGameMode(GetWorld()));
 	GetOwner()->OnTakeAnyDamage.AddDynamic(this, &UHealthController::TakeDamage);
 }
 
@@ -30,7 +33,12 @@ void UHealthController::TakeDamage(AActor * DamagedActor, float Damage, const UD
 		UE_LOG(LogTemp, Warning, TEXT("Health: %f"), Health);
 		if (Health <= 0) 
 		{
-			UE_LOG(LogTemp, Warning, TEXT("You Died"));
+			if (GameMode) {
+				GameMode->HandleShipDestroyed(GetOwner());
+			}
+			else {
+				UE_LOG(LogTemp, Warning, TEXT("Unable to reference GameMode on %s"), *GetOwner()->GetName());
+			}
 		}
 	}
 }

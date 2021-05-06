@@ -48,6 +48,7 @@ protected:
 	virtual void BeginPlay() override;
 	void GetInput();
 	void FireWeapon();
+	void HandleDeath() override;
 
 public:	
 	// Called every frame

@@ -2,6 +2,7 @@
 
 #include "EnemyPawnBase.h"
 #include "ShipPawnBase.h"
+#include "RotateActor.h"
 #include "Kismet/GameplayStatics.h"
 
 // Sets default values
@@ -29,6 +30,5 @@ float AEnemyPawnBase::GetPlayerDistance()
 void AEnemyPawnBase::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
 }
 

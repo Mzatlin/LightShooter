@@ -13,3 +13,7 @@ C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\Engine\Classes\GameFra
 C:\Program Files\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\RootMotionSource.generated.h
 C:\Program Files\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\Character.generated.h
 C:\Users\Michael\Documents\Github\LightShooter\LightShot\Intermediate\Build\Win64\UE4Editor\Inc\LightShot\LightShotPawn.generated.h
+c:\users\michael\documents\github\lightshooter\lightshot\source\lightshot\ShipPawnBase.h
+C:\Users\Michael\Documents\Github\LightShooter\LightShot\Intermediate\Build\Win64\UE4Editor\Inc\LightShot\ShipPawnBase.generated.h
+c:\users\michael\documents\github\lightshooter\lightshot\source\lightshot\PlayerShipPawn.h
+C:\Users\Michael\Documents\Github\LightShooter\LightShot\Intermediate\Build\Win64\UE4Editor\Inc\LightShot\PlayerShipPawn.generated.h

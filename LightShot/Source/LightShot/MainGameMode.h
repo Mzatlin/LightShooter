@@ -13,5 +13,7 @@ UCLASS()
 class LIGHTSHOT_API AMainGameMode : public AGameModeBase
 {
 	GENERATED_BODY()
-	
+public:
+	AMainGameMode();
+	void HandleShipDestroyed(AActor* ship);
 };

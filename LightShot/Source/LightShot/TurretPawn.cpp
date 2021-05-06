@@ -44,3 +44,8 @@ void ATurretPawn::Attack()
 	}
 }
 
+void ATurretPawn::HandleDeath()
+{
+	Destroy();
+}
+

@@ -24,6 +24,7 @@ protected:
 	virtual void BeginPlay() override;
 	virtual void CheckAttackCondition() override;
 	void Attack() override;
+	void HandleDeath() override;
 
 public:	
 	// Called every frame

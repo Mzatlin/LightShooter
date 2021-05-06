@@ -32,6 +32,11 @@ AShipPawnBase::AShipPawnBase()
 	Health = CreateDefaultSubobject<UHealthController>(TEXT("Health Controller"));
 }
 
+void AShipPawnBase::KillShip()
+{
+	HandleDeath();
+}
+
 // Called when the game starts or when spawned
 void AShipPawnBase::BeginPlay()
 {

@@ -13,6 +13,7 @@ class ALightShotGameMode : public AGameModeBase
 
 public:
 	ALightShotGameMode();
+	void HandleShipDestroyed(AActor* ship);
 };
 
 

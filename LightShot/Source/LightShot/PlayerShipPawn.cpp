@@ -66,6 +66,11 @@ void APlayerShipPawn::FireWeapon()
 	}
 }
 
+void APlayerShipPawn::HandleDeath()
+{
+	UE_LOG(LogTemp, Warning, TEXT("The Player Has Died"));
+}
+
 // Called every frame
 void APlayerShipPawn::Tick(float DeltaTime)
 {
