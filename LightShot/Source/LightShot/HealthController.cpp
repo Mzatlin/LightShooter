@@ -34,7 +34,7 @@ void UHealthController::TakeDamage(AActor * DamagedActor, float Damage, const UD
 		if (Health <= 0) 
 		{
 			if (GameMode) {
-				GameMode->HandleShipDestroyed(GetOwner());
+				GameMode->HandleDeadActor(GetOwner());
 			}
 			else {
 				UE_LOG(LogTemp, Warning, TEXT("Unable to reference GameMode on %s"), *GetOwner()->GetName());

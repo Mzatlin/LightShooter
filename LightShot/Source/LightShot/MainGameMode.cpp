@@ -12,7 +12,7 @@ AMainGameMode::AMainGameMode()
 	DefaultPawnClass = ALightShotPawn::StaticClass();
 }
 
-void AMainGameMode::HandleShipDestroyed(AActor * ship)
+void AMainGameMode::HandleDeadActor(AActor * ship)
 {
 
 	AShipPawnBase* shipActor = Cast<AShipPawnBase>(ship);
