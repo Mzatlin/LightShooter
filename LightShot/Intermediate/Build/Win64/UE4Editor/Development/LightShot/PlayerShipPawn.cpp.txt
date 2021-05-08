@@ -13,3 +13,5 @@ c:\users\michael\documents\github\lightshooter\lightshot\source\lightshot\Rotate
 C:\Users\Michael\Documents\Github\LightShooter\LightShot\Intermediate\Build\Win64\UE4Editor\Inc\LightShot\RotateActor.generated.h
 c:\users\michael\documents\github\lightshooter\lightshot\source\lightshot\LightShotProjectile.h
 C:\Users\Michael\Documents\Github\LightShooter\LightShot\Intermediate\Build\Win64\UE4Editor\Inc\LightShot\LightShotProjectile.generated.h
+c:\users\michael\documents\github\lightshooter\lightshot\source\lightshot\GrappleAbility.h
+C:\Users\Michael\Documents\Github\LightShooter\LightShot\Intermediate\Build\Win64\UE4Editor\Inc\LightShot\GrappleAbility.generated.h

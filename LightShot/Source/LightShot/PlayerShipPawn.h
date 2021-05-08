@@ -12,6 +12,7 @@ class USpringArmComponent;
 class UMoveActor;
 class URotateActor;
 class ALightShotProjectile;
+class UGrappleAbility;
 
 
 UCLASS()
@@ -32,6 +33,10 @@ private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	USpringArmComponent* CameraBoom;
 
+	/** Camera boom positioning the camera above the character */
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
+	UGrappleAbility* GrappleComponent;
+
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Projectile Type", meta = (AllowPrivateAccess = "true"))
 	TSubclassOf<ALightShotProjectile> ProjectileClass;
 
@@ -39,6 +44,9 @@ private:
 	float RightValue;
 	APlayerController* PlayerControllerRef;
 	FVector MoveDirection;
+
+	void Grapple();
+
 public:
 	// Sets default values for this pawn's properties
 	APlayerShipPawn();

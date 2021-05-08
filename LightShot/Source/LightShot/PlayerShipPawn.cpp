@@ -8,6 +8,7 @@
 #include "RotateActor.h"
 #include "LightShotProjectile.h"
 #include "LightShot/ShipPawnBase.h"
+#include "GrappleAbility.h"
 
 const FName APlayerShipPawn::MoveForwardBinding("MoveForward");
 const FName APlayerShipPawn::MoveRightBinding("MoveRight");
@@ -31,6 +32,7 @@ APlayerShipPawn::APlayerShipPawn()
 	CameraComponent->bUsePawnControlRotation = false;	// Camera does not rotate relative to arm
 
 	MoveActorComponent = CreateDefaultSubobject<UMoveActor>(TEXT("Movement Component"));
+	GrappleComponent = CreateDefaultSubobject<UGrappleAbility>(TEXT("Grapple Component"));
 }
 
 // Called when the game starts or when spawned
@@ -66,6 +68,15 @@ void APlayerShipPawn::FireWeapon()
 	}
 }
 
+void APlayerShipPawn::Grapple()
+{
+	if (GrappleComponent) 
+	{
+		GrappleComponent->TryGrapple();
+	}
+}
+
+
 void APlayerShipPawn::HandleDeath()
 {
 	UE_LOG(LogTemp, Warning, TEXT("The Player Has Died"));
@@ -93,5 +104,6 @@ void APlayerShipPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComp
 	PlayerInputComponent->BindAxis(MoveForwardBinding);
 	PlayerInputComponent->BindAxis(MoveRightBinding);
 	PlayerInputComponent->BindAction("Fire", IE_Pressed, this, &APlayerShipPawn::FireWeapon);
+	PlayerInputComponent->BindAction("Grapple", IE_Pressed, this, &APlayerShipPawn::Grapple);
 }
 

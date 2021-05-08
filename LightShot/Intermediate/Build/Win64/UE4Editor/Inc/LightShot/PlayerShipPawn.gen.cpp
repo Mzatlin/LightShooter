@@ -20,6 +20,7 @@ void EmptyLinkFunctionForGeneratedCodePlayerShipPawn() {}
 	ENGINE_API UClass* Z_Construct_UClass_UCameraComponent_NoRegister();
 	LIGHTSHOT_API UClass* Z_Construct_UClass_UMoveActor_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_USpringArmComponent_NoRegister();
+	LIGHTSHOT_API UClass* Z_Construct_UClass_UGrappleAbility_NoRegister();
 	COREUOBJECT_API UClass* Z_Construct_UClass_UClass();
 	LIGHTSHOT_API UClass* Z_Construct_UClass_ALightShotProjectile_NoRegister();
 // End Cross Module References
@@ -48,6 +49,10 @@ void EmptyLinkFunctionForGeneratedCodePlayerShipPawn() {}
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_CameraBoom_MetaData[];
 #endif
 		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_CameraBoom;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_GrappleComponent_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_GrappleComponent;
 #if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_ProjectileClass_MetaData[];
 #endif
@@ -101,6 +106,17 @@ void EmptyLinkFunctionForGeneratedCodePlayerShipPawn() {}
 #endif
 	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_APlayerShipPawn_Statics::NewProp_CameraBoom = { "CameraBoom", nullptr, (EPropertyFlags)0x00400000000a001d, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(APlayerShipPawn, CameraBoom), Z_Construct_UClass_USpringArmComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_APlayerShipPawn_Statics::NewProp_CameraBoom_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_APlayerShipPawn_Statics::NewProp_CameraBoom_MetaData)) };
 #if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_APlayerShipPawn_Statics::NewProp_GrappleComponent_MetaData[] = {
+		{ "AllowPrivateAccess", "true" },
+		{ "Category", "Components" },
+		{ "Comment", "/** Camera boom positioning the camera above the character */" },
+		{ "EditInline", "true" },
+		{ "ModuleRelativePath", "PlayerShipPawn.h" },
+		{ "ToolTip", "Camera boom positioning the camera above the character" },
+	};
+#endif
+	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_APlayerShipPawn_Statics::NewProp_GrappleComponent = { "GrappleComponent", nullptr, (EPropertyFlags)0x00400000000a001d, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(APlayerShipPawn, GrappleComponent), Z_Construct_UClass_UGrappleAbility_NoRegister, METADATA_PARAMS(Z_Construct_UClass_APlayerShipPawn_Statics::NewProp_GrappleComponent_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_APlayerShipPawn_Statics::NewProp_GrappleComponent_MetaData)) };
+#if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_APlayerShipPawn_Statics::NewProp_ProjectileClass_MetaData[] = {
 		{ "AllowPrivateAccess", "true" },
 		{ "Category", "Projectile Type" },
@@ -112,6 +128,7 @@ void EmptyLinkFunctionForGeneratedCodePlayerShipPawn() {}
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlayerShipPawn_Statics::NewProp_CameraComponent,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlayerShipPawn_Statics::NewProp_MoveActorComponent,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlayerShipPawn_Statics::NewProp_CameraBoom,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlayerShipPawn_Statics::NewProp_GrappleComponent,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlayerShipPawn_Statics::NewProp_ProjectileClass,
 	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_APlayerShipPawn_Statics::StaticCppClassTypeInfo = {
@@ -141,7 +158,7 @@ void EmptyLinkFunctionForGeneratedCodePlayerShipPawn() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(APlayerShipPawn, 1122810063);
+	IMPLEMENT_CLASS(APlayerShipPawn, 2096739144);
 	template<> LIGHTSHOT_API UClass* StaticClass<APlayerShipPawn>()
 	{
 		return APlayerShipPawn::StaticClass();
