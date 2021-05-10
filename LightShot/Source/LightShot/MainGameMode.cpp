@@ -5,6 +5,7 @@
 #include "LightShotPawn.h"
 #include "ShipPawnBase.h"
 #include "PlayerShipPawn.h"
+#include "BreakableObject.h"
 
 AMainGameMode::AMainGameMode()
 {
@@ -14,15 +15,30 @@ AMainGameMode::AMainGameMode()
 
 void AMainGameMode::HandleDeadActor(AActor * ship)
 {
-
-	AShipPawnBase* shipActor = Cast<AShipPawnBase>(ship);
-	if (!shipActor)
+	if (!ship)
 		return;
 
-	shipActor->KillShip();
+	AShipPawnBase* shipActor = Cast<AShipPawnBase>(ship);
+	if (shipActor) 
+	{
+		shipActor->KillShip();
+		APlayerShipPawn* player = Cast<APlayerShipPawn>(ship);
+		if (player) 
+		{
+			UE_LOG(LogTemp, Warning, TEXT("Insert Game Ending Logic Here"));
+		}
+	}
+	else
+	{
+		HandleBreakableActor(ship);
+	}
 
-	APlayerShipPawn* player = Cast<APlayerShipPawn>(ship);
-	if (player) {
-		UE_LOG(LogTemp, Warning, TEXT("Insert Game Ending Logic Here"));
+}
+
+void AMainGameMode::HandleBreakableActor(AActor * simple)
+{
+	ABreakableObject* breakActor = Cast<ABreakableObject>(simple);
+	if (breakActor) {
+		breakActor->HandleBreak();
 	}
 }

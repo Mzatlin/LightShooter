@@ -13,7 +13,6 @@ ALightShotGameMode::ALightShotGameMode()
 
 void ALightShotGameMode::HandleDeadActor(AActor * ship)
 {
-
 	AShipPawnBase* shipActor = Cast<AShipPawnBase>(ship);
 	if (!shipActor)
 		return;
@@ -24,4 +23,7 @@ void ALightShotGameMode::HandleDeadActor(AActor * ship)
 	if (player) {
 		UE_LOG(LogTemp, Warning, TEXT("The Player Has Died"));
 	}
+
+
 }
+

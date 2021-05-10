@@ -16,4 +16,5 @@ class LIGHTSHOT_API AMainGameMode : public AGameModeBase
 public:
 	AMainGameMode();
 	void HandleDeadActor(AActor* ship);
+	void HandleBreakableActor(AActor* simple);
 };

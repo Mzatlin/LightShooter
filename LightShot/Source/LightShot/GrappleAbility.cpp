@@ -2,6 +2,9 @@
 
 
 #include "GrappleAbility.h"
+#include "Kismet/GameplayStatics.h"
+#include "Kismet/KismetSystemLibrary.h"
+#include "GrappleTargetComponent.h"
 
 // Sets default values for this component's properties
 UGrappleAbility::UGrappleAbility()
@@ -49,6 +52,11 @@ void UGrappleAbility::TryGrapple()
 
 void UGrappleAbility::GatherTargets()
 {
+	float GrappleRange = 100.f;
+	AActor* OwningCharacter = GetOwner();
+	if (OwningCharacter) {
+	//	UKismetSystemLibrary::SphereOverlapActors(GetWorld(), OwningCharacter->GetActorLocation(),GrappleRange,);
+	}
 	//Create Overlap Sphere to capture all objects that have a grapple target component
 
 	//Find the target that is the closest to the player's forward facing vector
