@@ -5,6 +5,7 @@
 #include "Kismet/GameplayStatics.h"
 #include "Kismet/KismetSystemLibrary.h"
 #include "GrappleTargetComponent.h"
+#include "BreakableObject.h"
 
 // Sets default values for this component's properties
 UGrappleAbility::UGrappleAbility()
@@ -52,18 +53,45 @@ void UGrappleAbility::TryGrapple()
 
 void UGrappleAbility::GatherTargets()
 {
-	float GrappleRange = 100.f;
+	float GrappleRange = 800.f;
 	AActor* OwningCharacter = GetOwner();
-	if (OwningCharacter) {
-	//	UKismetSystemLibrary::SphereOverlapActors(GetWorld(), OwningCharacter->GetActorLocation(),GrappleRange,);
+	TArray<AActor*> outActors;
+	TArray<AActor*> ignoreActors;
+	ignoreActors.Add(OwningCharacter);
+	UClass* seekClass = ABreakableObject::StaticClass();//TSubclassOf<UGrappleTargetComponent>(); // NULL;
+	TArray<TEnumAsByte<EObjectTypeQuery>> traceObjectTypes;
+	//traceObjectTypes.Add(UEngineTypes::ConvertToObjectType(ECollisionChannel::ECC_WorldStatic));
+	//traceObjectTypes.Add(UEngineTypes::ConvertToObjectType(ECollisionChannel::ECC_WorldDynamic));
+	traceObjectTypes.Add(UEngineTypes::ConvertToObjectType(ECollisionChannel::ECC_GameTraceChannel2));
+	
+	if (OwningCharacter) 
+	{
+		UKismetSystemLibrary::SphereOverlapActors(
+			GetWorld(),
+			OwningCharacter->GetActorLocation(),
+			GrappleRange,
+			traceObjectTypes,
+			seekClass,
+			ignoreActors,
+			outActors
+			);
 	}
+	//UKismetSystemLibrary::DrawDebugSphere(GetWorld(), OwningCharacter->GetActorLocation(), GrappleRange, 12, FColor::Red, true, 10.0f);
 	//Create Overlap Sphere to capture all objects that have a grapple target component
 
 	//Find the target that is the closest to the player's forward facing vector
-	FindBestTarget();
+	FindBestTarget(outActors);
 }
 
-void UGrappleAbility::FindBestTarget()
+void UGrappleAbility::FindBestTarget(TArray<AActor*> &outActors)
 {
+	for (AActor* overlap : outActors) 
+	{
+		UGrappleTargetComponent* target = overlap->FindComponentByClass<UGrappleTargetComponent>();
+		if (target) 
+		{
+			target->SetTargetActive();
+		}
+	}
 }
 

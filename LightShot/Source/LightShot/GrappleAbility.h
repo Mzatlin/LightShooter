@@ -5,6 +5,9 @@
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
 #include "GrappleAbility.generated.h"
+
+class UGrappleTargetComponent;
+
 UENUM(BlueprintType)
 enum GrappleState
 {
@@ -14,12 +17,13 @@ enum GrappleState
 	Released UMETA(DisplayName = "Released")
 };
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
+
 class LIGHTSHOT_API UGrappleAbility : public UActorComponent
 {
 	GENERATED_BODY()
 private:
 	void GatherTargets();
-	void FindBestTarget();
+	void FindBestTarget(TArray<AActor*> &outActors);
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;

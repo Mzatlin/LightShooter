@@ -18,7 +18,6 @@ UGrappleTargetComponent::UGrappleTargetComponent()
 void UGrappleTargetComponent::BeginPlay()
 {
 	Super::BeginPlay();
-
 	// ...
 	
 }
@@ -30,5 +29,10 @@ void UGrappleTargetComponent::TickComponent(float DeltaTime, ELevelTick TickType
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
 	// ...
+}
+
+void UGrappleTargetComponent::SetTargetActive()
+{
+	UE_LOG(LogTemp, Warning, TEXT( "%s is active"), *GetOwner()->GetName());
 }
 
