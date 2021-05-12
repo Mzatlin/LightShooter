@@ -23,7 +23,10 @@ class LIGHTSHOT_API UGrappleAbility : public UActorComponent
 	GENERATED_BODY()
 private:
 	void GatherTargets();
-	void FindBestTarget(TArray<AActor*> &outActors);
+	UGrappleTargetComponent* FindBestTarget(TArray<AActor*> &outActors);
+
+	AActor* OwningCharacter = nullptr;
+	UGrappleTargetComponent* BestTarget = nullptr;
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;

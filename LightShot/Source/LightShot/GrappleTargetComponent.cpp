@@ -33,6 +33,6 @@ void UGrappleTargetComponent::TickComponent(float DeltaTime, ELevelTick TickType
 
 void UGrappleTargetComponent::SetTargetActive()
 {
-	UE_LOG(LogTemp, Warning, TEXT( "%s is active"), *GetOwner()->GetName());
+	UE_LOG(LogTemp, Warning, TEXT( "Current Target: %s"), *GetOwner()->GetName());
 }
 

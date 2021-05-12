@@ -6,6 +6,7 @@
 #include "Kismet/KismetSystemLibrary.h"
 #include "GrappleTargetComponent.h"
 #include "BreakableObject.h"
+#include "Math/Vector.h"
 
 // Sets default values for this component's properties
 UGrappleAbility::UGrappleAbility()
@@ -22,7 +23,7 @@ UGrappleAbility::UGrappleAbility()
 void UGrappleAbility::BeginPlay()
 {
 	Super::BeginPlay();
-
+	OwningCharacter = GetOwner();
 	// ...
 	
 }
@@ -54,14 +55,11 @@ void UGrappleAbility::TryGrapple()
 void UGrappleAbility::GatherTargets()
 {
 	float GrappleRange = 800.f;
-	AActor* OwningCharacter = GetOwner();
 	TArray<AActor*> outActors;
 	TArray<AActor*> ignoreActors;
 	ignoreActors.Add(OwningCharacter);
 	UClass* seekClass = ABreakableObject::StaticClass();//TSubclassOf<UGrappleTargetComponent>(); // NULL;
 	TArray<TEnumAsByte<EObjectTypeQuery>> traceObjectTypes;
-	//traceObjectTypes.Add(UEngineTypes::ConvertToObjectType(ECollisionChannel::ECC_WorldStatic));
-	//traceObjectTypes.Add(UEngineTypes::ConvertToObjectType(ECollisionChannel::ECC_WorldDynamic));
 	traceObjectTypes.Add(UEngineTypes::ConvertToObjectType(ECollisionChannel::ECC_GameTraceChannel2));
 	
 	if (OwningCharacter) 
@@ -80,18 +78,34 @@ void UGrappleAbility::GatherTargets()
 	//Create Overlap Sphere to capture all objects that have a grapple target component
 
 	//Find the target that is the closest to the player's forward facing vector
-	FindBestTarget(outActors);
+	UGrappleTargetComponent* grappleTarget = FindBestTarget(outActors);
+	if (grappleTarget) 
+	{
+		grappleTarget->SetTargetActive();
+	}
 }
 
-void UGrappleAbility::FindBestTarget(TArray<AActor*> &outActors)
+UGrappleTargetComponent* UGrappleAbility::FindBestTarget(TArray<AActor*> &outActors)
 {
+	float bestAngle = INT_MAX;
 	for (AActor* overlap : outActors) 
 	{
 		UGrappleTargetComponent* target = overlap->FindComponentByClass<UGrappleTargetComponent>();
-		if (target) 
+		if (!target)
 		{
-			target->SetTargetActive();
+			continue;
+		}
+	
+
+		FVector currentDirection = (overlap->GetActorLocation() - OwningCharacter->GetActorLocation()).GetSafeNormal(0.001);
+		float currentAngle = FMath::Acos(FVector::DotProduct(currentDirection, OwningCharacter->GetActorForwardVector()));
+
+		if (!BestTarget || currentAngle < bestAngle) {
+			BestTarget = target;
+			bestAngle = currentAngle;
 		}
 	}
+
+	return BestTarget;
 }
 
