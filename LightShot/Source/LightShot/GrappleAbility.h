@@ -7,6 +7,8 @@
 #include "GrappleAbility.generated.h"
 
 class UGrappleTargetComponent;
+class AGrappleHook;
+class USceneComponent;
 
 UENUM(BlueprintType)
 enum GrappleState
@@ -38,4 +40,7 @@ public:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 	void TryGrapple();
 	GrappleState CurrentGrappleState;
+	UGrappleTargetComponent* GrappleTarget = nullptr;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Grapple Hook Type", meta = (AllowPrivateAccess = "true"))
+	TSubclassOf<AGrappleHook> ProjectileClass;
 };

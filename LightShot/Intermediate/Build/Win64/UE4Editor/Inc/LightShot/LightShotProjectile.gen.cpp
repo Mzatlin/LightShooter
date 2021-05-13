@@ -22,9 +22,9 @@ void EmptyLinkFunctionForGeneratedCodeLightShotProjectile() {}
 	COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FVector();
 	ENGINE_API UScriptStruct* Z_Construct_UScriptStruct_FHitResult();
 	ENGINE_API UClass* Z_Construct_UClass_UStaticMeshComponent_NoRegister();
-	ENGINE_API UClass* Z_Construct_UClass_UProjectileMovementComponent_NoRegister();
 	COREUOBJECT_API UClass* Z_Construct_UClass_UClass();
 	ENGINE_API UClass* Z_Construct_UClass_UDamageType_NoRegister();
+	ENGINE_API UClass* Z_Construct_UClass_UProjectileMovementComponent_NoRegister();
 // End Cross Module References
 	DEFINE_FUNCTION(ALightShotProjectile::execOnHit)
 	{
@@ -136,10 +136,6 @@ void EmptyLinkFunctionForGeneratedCodeLightShotProjectile() {}
 #endif
 		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_ProjectileMesh;
 #if WITH_METADATA
-		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_ProjectileMovement_MetaData[];
-#endif
-		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_ProjectileMovement;
-#if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_Damage_MetaData[];
 #endif
 		static const UE4CodeGen_Private::FFloatPropertyParams NewProp_Damage;
@@ -147,6 +143,10 @@ void EmptyLinkFunctionForGeneratedCodeLightShotProjectile() {}
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_DamageType_MetaData[];
 #endif
 		static const UE4CodeGen_Private::FClassPropertyParams NewProp_DamageType;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_ProjectileMovement_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_ProjectileMovement;
 		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
 		static const UE4CodeGen_Private::FClassParams ClassParams;
@@ -176,17 +176,6 @@ void EmptyLinkFunctionForGeneratedCodeLightShotProjectile() {}
 #endif
 	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ALightShotProjectile_Statics::NewProp_ProjectileMesh = { "ProjectileMesh", nullptr, (EPropertyFlags)0x00400000000a001d, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ALightShotProjectile, ProjectileMesh), Z_Construct_UClass_UStaticMeshComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_ALightShotProjectile_Statics::NewProp_ProjectileMesh_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ALightShotProjectile_Statics::NewProp_ProjectileMesh_MetaData)) };
 #if WITH_METADATA
-	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ALightShotProjectile_Statics::NewProp_ProjectileMovement_MetaData[] = {
-		{ "AllowPrivateAccess", "true" },
-		{ "Category", "Movement" },
-		{ "Comment", "/** Projectile movement component */" },
-		{ "EditInline", "true" },
-		{ "ModuleRelativePath", "LightShotProjectile.h" },
-		{ "ToolTip", "Projectile movement component" },
-	};
-#endif
-	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ALightShotProjectile_Statics::NewProp_ProjectileMovement = { "ProjectileMovement", nullptr, (EPropertyFlags)0x00400000000a001d, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ALightShotProjectile, ProjectileMovement), Z_Construct_UClass_UProjectileMovementComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_ALightShotProjectile_Statics::NewProp_ProjectileMovement_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ALightShotProjectile_Statics::NewProp_ProjectileMovement_MetaData)) };
-#if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ALightShotProjectile_Statics::NewProp_Damage_MetaData[] = {
 		{ "AllowPrivateAccess", "true" },
 		{ "Category", "Damage" },
@@ -201,11 +190,22 @@ void EmptyLinkFunctionForGeneratedCodeLightShotProjectile() {}
 	};
 #endif
 	const UE4CodeGen_Private::FClassPropertyParams Z_Construct_UClass_ALightShotProjectile_Statics::NewProp_DamageType = { "DamageType", nullptr, (EPropertyFlags)0x0044000000010001, UE4CodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ALightShotProjectile, DamageType), Z_Construct_UClass_UDamageType_NoRegister, Z_Construct_UClass_UClass, METADATA_PARAMS(Z_Construct_UClass_ALightShotProjectile_Statics::NewProp_DamageType_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ALightShotProjectile_Statics::NewProp_DamageType_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ALightShotProjectile_Statics::NewProp_ProjectileMovement_MetaData[] = {
+		{ "AllowPrivateAccess", "true" },
+		{ "Category", "Movement" },
+		{ "Comment", "/** Projectile movement component */" },
+		{ "EditInline", "true" },
+		{ "ModuleRelativePath", "LightShotProjectile.h" },
+		{ "ToolTip", "Projectile movement component" },
+	};
+#endif
+	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ALightShotProjectile_Statics::NewProp_ProjectileMovement = { "ProjectileMovement", nullptr, (EPropertyFlags)0x00200800000a001d, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ALightShotProjectile, ProjectileMovement), Z_Construct_UClass_UProjectileMovementComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_ALightShotProjectile_Statics::NewProp_ProjectileMovement_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ALightShotProjectile_Statics::NewProp_ProjectileMovement_MetaData)) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_ALightShotProjectile_Statics::PropPointers[] = {
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ALightShotProjectile_Statics::NewProp_ProjectileMesh,
-		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ALightShotProjectile_Statics::NewProp_ProjectileMovement,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ALightShotProjectile_Statics::NewProp_Damage,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ALightShotProjectile_Statics::NewProp_DamageType,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ALightShotProjectile_Statics::NewProp_ProjectileMovement,
 	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_ALightShotProjectile_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<ALightShotProjectile>::IsAbstract,
@@ -234,7 +234,7 @@ void EmptyLinkFunctionForGeneratedCodeLightShotProjectile() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(ALightShotProjectile, 1071535262);
+	IMPLEMENT_CLASS(ALightShotProjectile, 2061279233);
 	template<> LIGHTSHOT_API UClass* StaticClass<ALightShotProjectile>()
 	{
 		return ALightShotProjectile::StaticClass();

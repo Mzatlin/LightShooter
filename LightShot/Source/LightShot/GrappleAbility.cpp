@@ -7,6 +7,7 @@
 #include "GrappleTargetComponent.h"
 #include "BreakableObject.h"
 #include "Math/Vector.h"
+#include "GrappleHook.h"
 
 // Sets default values for this component's properties
 UGrappleAbility::UGrappleAbility()
@@ -49,7 +50,21 @@ void UGrappleAbility::TickComponent(float DeltaTime, ELevelTick TickType, FActor
 
 void UGrappleAbility::TryGrapple()
 {
-	UE_LOG(LogTemp, Warning, TEXT("Can't Grapple"));
+	if (CurrentGrappleState == Retracted && GrappleTarget) 
+	{
+		if (ProjectileClass) {
+
+			FRotator SpawnRotation = FRotator(0,0,0);
+			AGrappleHook* TempProjectile = GetWorld()->SpawnActor<AGrappleHook>(ProjectileClass, OwningCharacter->GetActorLocation(), SpawnRotation);
+			TempProjectile->SetDirectionToTarget(GrappleTarget);
+			TempProjectile->SetOwner(GetOwner());
+			//CurrentGrappleState = Firing;
+		}
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Can't Grapple"));
+	}
 }
 
 void UGrappleAbility::GatherTargets()
@@ -61,7 +76,7 @@ void UGrappleAbility::GatherTargets()
 	UClass* seekClass = ABreakableObject::StaticClass();//TSubclassOf<UGrappleTargetComponent>(); // NULL;
 	TArray<TEnumAsByte<EObjectTypeQuery>> traceObjectTypes;
 	traceObjectTypes.Add(UEngineTypes::ConvertToObjectType(ECollisionChannel::ECC_GameTraceChannel2));
-	
+
 	if (OwningCharacter) 
 	{
 		UKismetSystemLibrary::SphereOverlapActors(
@@ -78,10 +93,11 @@ void UGrappleAbility::GatherTargets()
 	//Create Overlap Sphere to capture all objects that have a grapple target component
 
 	//Find the target that is the closest to the player's forward facing vector
-	UGrappleTargetComponent* grappleTarget = FindBestTarget(outActors);
-	if (grappleTarget) 
+		GrappleTarget = FindBestTarget(outActors);
+	
+	if (GrappleTarget) 
 	{
-		grappleTarget->SetTargetActive();
+		GrappleTarget->SetTargetActive();
 	}
 }
 
@@ -95,7 +111,6 @@ UGrappleTargetComponent* UGrappleAbility::FindBestTarget(TArray<AActor*> &outAct
 		{
 			continue;
 		}
-	
 
 		FVector currentDirection = (overlap->GetActorLocation() - OwningCharacter->GetActorLocation()).GetSafeNormal(0.001);
 		float currentAngle = FMath::Acos(FVector::DotProduct(currentDirection, OwningCharacter->GetActorForwardVector()));
