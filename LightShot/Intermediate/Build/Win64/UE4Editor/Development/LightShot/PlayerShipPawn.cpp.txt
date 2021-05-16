@@ -14,4 +14,8 @@ C:\Users\Michael\Documents\Github\LightShooter\LightShot\Intermediate\Build\Win6
 c:\users\michael\documents\github\lightshooter\lightshot\source\lightshot\LightShotProjectile.h
 C:\Users\Michael\Documents\Github\LightShooter\LightShot\Intermediate\Build\Win64\UE4Editor\Inc\LightShot\LightShotProjectile.generated.h
 c:\users\michael\documents\github\lightshooter\lightshot\source\lightshot\GrappleAbility.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Plugins\Runtime\CableComponent\Source\CableComponent\Classes\CableActor.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Plugins\Runtime\CableComponent\Intermediate\Build\Win64\UE4Editor\Inc\CableComponent\CableActor.generated.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Plugins\Runtime\CableComponent\Source\CableComponent\Classes\CableComponent.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Plugins\Runtime\CableComponent\Intermediate\Build\Win64\UE4Editor\Inc\CableComponent\CableComponent.generated.h
 C:\Users\Michael\Documents\Github\LightShooter\LightShot\Intermediate\Build\Win64\UE4Editor\Inc\LightShot\GrappleAbility.generated.h

@@ -4,11 +4,15 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
+#include "CableActor.h"
+#include "CableComponent.h"
 #include "GrappleAbility.generated.h"
 
 class UGrappleTargetComponent;
 class AGrappleHook;
 class USceneComponent;
+class ACableActor;
+class UCableComponent;
 
 UENUM(BlueprintType)
 enum GrappleState
@@ -29,6 +33,7 @@ private:
 
 	AActor* OwningCharacter = nullptr;
 	UGrappleTargetComponent* BestTarget = nullptr;
+	FVector CurrentDirection;
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
@@ -41,6 +46,9 @@ public:
 	void TryGrapple();
 	GrappleState CurrentGrappleState;
 	UGrappleTargetComponent* GrappleTarget = nullptr;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Grapple Hook Type", meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Grapple Hook Components", meta = (AllowPrivateAccess = "true"))
 	TSubclassOf<AGrappleHook> ProjectileClass;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Grapple Hook Components", meta = (AllowPrivateAccess = "true"))
+	TSubclassOf<ACableActor> CableClass;
+
 };
