@@ -110,6 +110,7 @@ void UGrappleAbility::GatherTargets()
 	
 
 	//Find the target that is the closest to the player's forward facing vector
+		BestTarget = nullptr;
 		GrappleTarget = FindBestTarget(outActors);
 	
 	if (GrappleTarget) 

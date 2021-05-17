@@ -18,6 +18,7 @@ private:
 	FVector TargetLocation;
 	FVector Direction;
 	FVector StartLocation;
+	AActor* TargetActor;
 	float HookSpeed = 3000.f;
 public:	
 	// Sets default values for this actor's properties

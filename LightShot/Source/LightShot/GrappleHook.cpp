@@ -17,9 +17,10 @@ AGrappleHook::AGrappleHook()
 
 void AGrappleHook::SetDirectionToTarget(UGrappleTargetComponent * grappleTarget)
 {
-	if (grappleTarget)
+	if (grappleTarget && grappleTarget->GetOwner())
 	{
-		TargetLocation = grappleTarget->GetOwner()->GetActorLocation();
+		TargetActor = grappleTarget->GetOwner();
+		TargetLocation = TargetActor->GetActorLocation();
 		Direction = (TargetLocation - GetActorLocation()).GetSafeNormal(0.001);
 		ProjectileMovement->Velocity = (Direction * HookSpeed);
 	}
@@ -36,6 +37,7 @@ void AGrappleHook::BeginPlay()
 void AGrappleHook::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
 	if (FVector::DistSquared(GetActorLocation(), StartLocation) >= FVector::DistSquared(GetActorLocation(),TargetLocation))
 	{
 		SetActorLocation(TargetLocation);
