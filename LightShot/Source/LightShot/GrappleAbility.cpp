@@ -66,14 +66,15 @@ void UGrappleAbility::TryGrapple()
 			HookProjectile->SetOwner(GetOwner());
 		    ACableActor* Cable = GetWorld()->SpawnActor<ACableActor>(CableClass, OwningCharacter->GetActorLocation(), SpawnRotation);
 			TArray<UStaticMeshComponent>components;
-			Cable->CableComponent->AttachToComponent(OwningCharacter->GetRootComponent(), FAttachmentTransformRules(
-				EAttachmentRule::SnapToTarget,
-				EAttachmentRule::SnapToTarget, 
-				EAttachmentRule::SnapToTarget,
-				true));
+			Cable->CableComponent->AttachToComponent(OwningCharacter->GetRootComponent(), 
+				FAttachmentTransformRules(
+					EAttachmentRule::SnapToTarget,
+					EAttachmentRule::SnapToTarget, 
+					EAttachmentRule::SnapToTarget,
+					true));
 			Cable->CableComponent->SetAttachEndTo(HookProjectile,"None");
-	
-			//CurrentGrappleState = Firing;
+			//send cable component to latchon
+			CurrentGrappleState = Firing;
 		}
 	}
 	else

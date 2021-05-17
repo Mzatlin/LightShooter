@@ -29,13 +29,16 @@ void AGrappleHook::SetDirectionToTarget(UGrappleTargetComponent * grappleTarget)
 void AGrappleHook::BeginPlay()
 {
 	Super::BeginPlay();
-
+	StartLocation = GetActorLocation();
 }
 
 // Called every frame
 void AGrappleHook::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
+	if (FVector::DistSquared(GetActorLocation(), StartLocation) >= FVector::DistSquared(GetActorLocation(),TargetLocation))
+	{
+		SetActorLocation(TargetLocation);
+	}
 }
 

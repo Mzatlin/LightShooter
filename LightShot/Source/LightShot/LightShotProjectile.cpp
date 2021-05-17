@@ -49,7 +49,7 @@ void ALightShotProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActo
 		// Only add impulse and destroy projectile if we hit a physics
 		if (OtherComp->IsSimulatingPhysics()) 
 		{
-			OtherComp->AddImpulseAtLocation(GetVelocity() * 20.0f, GetActorLocation());
+			OtherComp->AddImpulseAtLocation(GetVelocity() * 5.0f, GetActorLocation());
 		}
 	}
 

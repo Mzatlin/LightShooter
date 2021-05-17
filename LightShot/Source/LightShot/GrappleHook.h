@@ -17,6 +17,7 @@ class LIGHTSHOT_API AGrappleHook : public ALightShotProjectile
 private:
 	FVector TargetLocation;
 	FVector Direction;
+	FVector StartLocation;
 	float HookSpeed = 3000.f;
 public:	
 	// Sets default values for this actor's properties
