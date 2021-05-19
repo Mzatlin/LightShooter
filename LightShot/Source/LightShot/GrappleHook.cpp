@@ -37,10 +37,15 @@ void AGrappleHook::BeginPlay()
 void AGrappleHook::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
 	if (FVector::DistSquared(GetActorLocation(), StartLocation) >= FVector::DistSquared(GetActorLocation(),TargetLocation))
 	{
 		SetActorLocation(TargetLocation);
+		TargetActor->AttachToActor(this,
+			FAttachmentTransformRules(
+				EAttachmentRule::SnapToTarget,
+				EAttachmentRule::SnapToTarget,
+				EAttachmentRule::SnapToTarget,
+				true));
 	}
 }
 

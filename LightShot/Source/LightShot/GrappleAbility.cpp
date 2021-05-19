@@ -110,7 +110,6 @@ void UGrappleAbility::GatherTargets()
 	
 
 	//Find the target that is the closest to the player's forward facing vector
-		BestTarget = nullptr;
 		GrappleTarget = FindBestTarget(outActors);
 	
 	if (GrappleTarget) 
@@ -122,6 +121,8 @@ void UGrappleAbility::GatherTargets()
 UGrappleTargetComponent* UGrappleAbility::FindBestTarget(TArray<AActor*> &outActors)
 {
 	float bestAngle = INT_MAX;
+	BestTarget = nullptr;
+
 	for (AActor* overlap : outActors) 
 	{
 		UGrappleTargetComponent* target = overlap->FindComponentByClass<UGrappleTargetComponent>();
