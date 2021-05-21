@@ -6,6 +6,8 @@
 #include "GameFramework/ProjectileMovementComponent.h"
 #include "GrappleTargetComponent.h"
 
+
+
 // Sets default values
 AGrappleHook::AGrappleHook()
 {
@@ -20,6 +22,7 @@ void AGrappleHook::SetDirectionToTarget(UGrappleTargetComponent * grappleTarget)
 	if (grappleTarget && grappleTarget->GetOwner())
 	{
 		TargetActor = grappleTarget->GetOwner();
+		TargetMesh = TargetActor->FindComponentByClass<UStaticMeshComponent>();
 		TargetLocation = TargetActor->GetActorLocation();
 		Direction = (TargetLocation - GetActorLocation()).GetSafeNormal(0.001);
 		ProjectileMovement->Velocity = (Direction * HookSpeed);
@@ -33,19 +36,36 @@ void AGrappleHook::BeginPlay()
 	StartLocation = GetActorLocation();
 }
 
-// Called every frame
-void AGrappleHook::Tick(float DeltaTime)
+void AGrappleHook::TryAttachGrappleHook()
 {
-	Super::Tick(DeltaTime);
-	if (FVector::DistSquared(GetActorLocation(), StartLocation) >= FVector::DistSquared(GetActorLocation(),TargetLocation))
+	if (FVector::DistSquared(GetActorLocation(), StartLocation) >= FVector::DistSquared(GetActorLocation(), TargetLocation))
 	{
 		SetActorLocation(TargetLocation);
+		ProjectileMovement->Velocity = FVector::ZeroVector;
 		TargetActor->AttachToActor(this,
 			FAttachmentTransformRules(
 				EAttachmentRule::SnapToTarget,
 				EAttachmentRule::SnapToTarget,
 				EAttachmentRule::SnapToTarget,
 				true));
+		isAttached = true;
 	}
+}
+
+// Called every frame
+void AGrappleHook::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+	if (!isAttached) {
+		TryAttachGrappleHook();
+	}
+	else 
+	{
+		if (TargetMesh) 
+		{
+			SetActorLocation(TargetMesh->GetComponentLocation());
+		}
+	}
+
 }
 

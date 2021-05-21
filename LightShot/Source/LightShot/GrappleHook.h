@@ -20,6 +20,9 @@ private:
 	FVector StartLocation;
 	AActor* TargetActor;
 	float HookSpeed = 3000.f;
+	bool isAttached = false;
+	UStaticMeshComponent* TargetMesh;
+	void TryAttachGrappleHook();
 public:	
 	// Sets default values for this actor's properties
 	AGrappleHook();

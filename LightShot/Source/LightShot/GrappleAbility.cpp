@@ -89,7 +89,7 @@ void UGrappleAbility::GatherTargets()
 	TArray<AActor*> outActors;
 	TArray<AActor*> ignoreActors;
 	ignoreActors.Add(OwningCharacter);
-	UClass* seekClass = ABreakableObject::StaticClass();//TSubclassOf<UGrappleTargetComponent>(); // NULL;
+	UClass* seekClass = ABreakableObject::StaticClass();
 	TArray<TEnumAsByte<EObjectTypeQuery>> traceObjectTypes;
 	traceObjectTypes.Add(UEngineTypes::ConvertToObjectType(ECollisionChannel::ECC_GameTraceChannel2));
 

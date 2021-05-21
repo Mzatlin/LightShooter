@@ -84,7 +84,7 @@ void EmptyLinkFunctionForGeneratedCodeLightShotPawn() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ALightShotPawn_Statics::NewProp_ShipMeshComponent_MetaData[] = {
 		{ "AllowPrivateAccess", "true" },
-		{ "Category", "Mesh" },
+		{ "Category", "TargetMesh" },
 		{ "Comment", "/* The mesh component */" },
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "LightShotPawn.h" },
@@ -186,7 +186,7 @@ void EmptyLinkFunctionForGeneratedCodeLightShotPawn() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(ALightShotPawn, 4260643678);
+	IMPLEMENT_CLASS(ALightShotPawn, 4022191528);
 	template<> LIGHTSHOT_API UClass* StaticClass<ALightShotPawn>()
 	{
 		return ALightShotPawn::StaticClass();
