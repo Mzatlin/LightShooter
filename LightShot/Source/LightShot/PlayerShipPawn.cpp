@@ -35,11 +35,17 @@ APlayerShipPawn::APlayerShipPawn()
 	GrappleComponent = CreateDefaultSubobject<UGrappleAbility>(TEXT("Grapple Component"));
 }
 
+bool APlayerShipPawn::GetPlayerDeathState()
+{
+	return bIsDead;
+}
+
 // Called when the game starts or when spawned
 void APlayerShipPawn::BeginPlay()
 {
 	Super::BeginPlay();
 	PlayerControllerRef = Cast<APlayerController>(GetController());
+	bIsDead = false;
 }
 
 void APlayerShipPawn::GetInput()
@@ -80,6 +86,7 @@ void APlayerShipPawn::Grapple()
 void APlayerShipPawn::HandleDeath()
 {
 	UE_LOG(LogTemp, Warning, TEXT("The Player Has Died"));
+	bIsDead = true;
 }
 
 // Called every frame
@@ -88,7 +95,7 @@ void APlayerShipPawn::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 	GetInput();
 	MoveActorComponent->CalculateMovement(DeltaTime, MoveDirection);
-	if (PlayerControllerRef) {
+	if (PlayerControllerRef && !bIsDead) {
 		FHitResult TraceHitResult;
 		PlayerControllerRef->GetHitResultUnderCursor(ECC_Visibility, false, TraceHitResult);
 		FVector HitLocation = TraceHitResult.ImpactPoint;

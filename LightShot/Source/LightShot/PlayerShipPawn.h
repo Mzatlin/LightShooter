@@ -44,12 +44,14 @@ private:
 	float RightValue;
 	APlayerController* PlayerControllerRef;
 	FVector MoveDirection;
+	bool bIsDead = false;
 
 	void Grapple();
 
 public:
 	// Sets default values for this pawn's properties
 	APlayerShipPawn();
+	bool GetPlayerDeathState();
 
 protected:
 	// Called when the game starts or when spawned

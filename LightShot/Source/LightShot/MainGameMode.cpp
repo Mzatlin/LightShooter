@@ -6,6 +6,15 @@
 #include "ShipPawnBase.h"
 #include "PlayerShipPawn.h"
 #include "BreakableObject.h"
+#include "PlayerControllerBase.h"
+#include "Kismet/GameplayStatics.h"
+
+void AMainGameMode::BeginPlay()
+{
+	Super::BeginPlay();
+	PlayerControllerRef = Cast<APlayerControllerBase>(UGameplayStatics::GetPlayerController(this, 0));
+	PlayerControllerRef->SetPlayerActive(true);
+}
 
 AMainGameMode::AMainGameMode()
 {
@@ -23,9 +32,10 @@ void AMainGameMode::HandleDeadActor(AActor * ship)
 	{
 		shipActor->KillShip();
 		APlayerShipPawn* player = Cast<APlayerShipPawn>(ship);
-		if (player) 
+		if (player && PlayerControllerRef) 
 		{
 			UE_LOG(LogTemp, Warning, TEXT("Insert Game Ending Logic Here"));
+			PlayerControllerRef->SetPlayerActive(false);
 		}
 	}
 	else
@@ -41,4 +51,6 @@ void AMainGameMode::HandleBreakableActor(AActor * simple)
 	if (breakActor) {
 		breakActor->HandleBreak();
 	}
+
+
 }
