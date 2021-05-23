@@ -86,6 +86,7 @@ void APlayerShipPawn::Grapple()
 void APlayerShipPawn::HandleDeath()
 {
 	UE_LOG(LogTemp, Warning, TEXT("The Player Has Died"));
+	SetActorHiddenInGame(true);
 	bIsDead = true;
 }
 
