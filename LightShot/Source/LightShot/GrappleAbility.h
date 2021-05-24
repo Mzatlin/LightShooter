@@ -18,8 +18,7 @@ UENUM(BlueprintType)
 enum GrappleState
 {
 	Retracted UMETA(DisplayName = "Retracted"), 
-	Firing UMETA(DisplayName = "Firing"),
-	Attatched UMETA(DisplayName = "Attached"),
+	Attatched UMETA(DisplayName = "Attatched"),
 	Released UMETA(DisplayName = "Released")
 };
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
@@ -30,6 +29,7 @@ class LIGHTSHOT_API UGrappleAbility : public UActorComponent
 private:
 	void GatherTargets();
 	UGrappleTargetComponent* FindBestTarget(TArray<AActor*> &outActors);
+	void AttatchHookToTarget();
 
 	AActor* OwningCharacter = nullptr;
 	UGrappleTargetComponent* BestTarget = nullptr;
@@ -50,5 +50,6 @@ public:
 	TSubclassOf<AGrappleHook> ProjectileClass;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Grapple Hook Components", meta = (AllowPrivateAccess = "true"))
 	TSubclassOf<ACableActor> CableClass;
+	bool isGrappled = false;
 
 };
