@@ -26,9 +26,16 @@ void AGrappleHook::SetDirectionToTarget(UGrappleTargetComponent * grappleTarget)
 		TargetLocation = TargetActor->GetActorLocation();
 		Direction = (TargetLocation - GetActorLocation()).GetSafeNormal(0.001);
 		ProjectileMovement->Velocity = (Direction * HookSpeed);
+		CurrentTargetLocation = TargetMesh->GetComponentLocation();
 	}
 }
 
+void AGrappleHook::ReturnDirectionToSender()
+{
+	isRetrieved = true;
+	Direction = (StartLocation - GetActorLocation()).GetSafeNormal(0.001);
+	ProjectileMovement->Velocity = (Direction * HookSpeed);
+}
 // Called when the game starts or when spawned
 void AGrappleHook::BeginPlay()
 {
@@ -38,7 +45,7 @@ void AGrappleHook::BeginPlay()
 
 void AGrappleHook::TryAttachGrappleHook()
 {
-	if (FVector::DistSquared(GetActorLocation(), StartLocation) >= FVector::DistSquared(GetActorLocation(), TargetLocation))
+	if (!isAttached && FVector::DistSquared(GetActorLocation(), StartLocation) >= FVector::DistSquared(GetActorLocation(), TargetLocation))
 	{
 		SetActorLocation(TargetLocation);
 		ProjectileMovement->Velocity = FVector::ZeroVector;
@@ -52,20 +59,37 @@ void AGrappleHook::TryAttachGrappleHook()
 	}
 }
 
+void AGrappleHook::TryDetatchGrappleHook()
+{
+	if (isRetrieved && FVector::DistSquared(GetActorLocation(), StartLocation) <= FVector::DistSquared(GetActorLocation(), TargetLocation))
+	{
+		CurrentTargetLocation = StartLocation;
+		TargetActor->SetActorLocation(StartLocation);
+		TargetActor->DetachFromActor(FDetachmentTransformRules(
+			EDetachmentRule::KeepRelative,
+			EDetachmentRule::KeepRelative, 
+			EDetachmentRule::KeepRelative,
+			true));
+		isAttached = false;
+	}
+}
+
 // Called every frame
 void AGrappleHook::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	if (!isAttached) {
-		TryAttachGrappleHook();
-	}
-	else 
+	TryAttachGrappleHook();
+	TryDetatchGrappleHook();
+	if (TargetMesh && !isRetrieved) 
 	{
-		if (TargetMesh) 
-		{
-			SetActorLocation(TargetMesh->GetComponentLocation());
-		}
+		CurrentTargetLocation = TargetMesh->GetComponentLocation();
 	}
+	if (isRetrieved) {
+		CurrentTargetLocation = StartLocation;
+	}
+	SetActorLocation(CurrentTargetLocation);
+
+
 
 }
 

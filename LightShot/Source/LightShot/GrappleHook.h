@@ -17,16 +17,21 @@ class LIGHTSHOT_API AGrappleHook : public ALightShotProjectile
 private:
 	FVector TargetLocation;
 	FVector Direction;
+	FVector CurrentTargetLocation;
 	FVector StartLocation;
 	AActor* TargetActor;
+	AActor* OwningActor;
 	float HookSpeed = 3000.f;
 	bool isAttached = false;
+	bool isRetrieved = false;
 	UStaticMeshComponent* TargetMesh;
 	void TryAttachGrappleHook();
+	void TryDetatchGrappleHook();
 public:	
 	// Sets default values for this actor's properties
 	AGrappleHook();
 	void SetDirectionToTarget(UGrappleTargetComponent* grappleTarget);
+	void ReturnDirectionToSender();
 
 protected:
 	// Called when the game starts or when spawned

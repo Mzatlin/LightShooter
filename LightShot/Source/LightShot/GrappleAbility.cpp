@@ -57,7 +57,7 @@ void UGrappleAbility::AttatchHookToTarget()
 	if (ProjectileClass && CableClass) {
 
 		FRotator SpawnRotation = FRotator(0, 0, 0);
-		AGrappleHook* HookProjectile = GetWorld()->SpawnActor<AGrappleHook>(ProjectileClass, OwningCharacter->GetActorLocation(), SpawnRotation);
+		HookProjectile = GetWorld()->SpawnActor<AGrappleHook>(ProjectileClass, OwningCharacter->GetActorLocation(), SpawnRotation);
 		HookProjectile->SetDirectionToTarget(GrappleTarget);
 		HookProjectile->SetOwner(OwningCharacter);
 		ACableActor* Cable = GetWorld()->SpawnActor<ACableActor>(CableClass, OwningCharacter->GetActorLocation(), SpawnRotation);
@@ -82,9 +82,9 @@ void UGrappleAbility::TryGrapple()
 	{
 		AttatchHookToTarget();
 	}
-	else if (CurrentGrappleState == Attatched) 
+	else if (CurrentGrappleState == Attatched && HookProjectile) 
 	{
-		//Do something
+		HookProjectile->ReturnDirectionToSender();
 	}
 	else
 	{

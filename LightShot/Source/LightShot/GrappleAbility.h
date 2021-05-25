@@ -34,6 +34,7 @@ private:
 	AActor* OwningCharacter = nullptr;
 	UGrappleTargetComponent* BestTarget = nullptr;
 	FVector CurrentDirection;
+	AGrappleHook* HookProjectile;
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
