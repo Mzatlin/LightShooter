@@ -52,8 +52,8 @@ void AGrappleHook::TryAttachGrappleHook()
 		TargetActor->AttachToActor(this,
 			FAttachmentTransformRules(
 				EAttachmentRule::SnapToTarget,
-				EAttachmentRule::SnapToTarget,
-				EAttachmentRule::SnapToTarget,
+				EAttachmentRule::KeepWorld,
+				EAttachmentRule::KeepRelative,
 				true));
 		isAttached = true;
 	}
@@ -65,12 +65,18 @@ void AGrappleHook::TryDetatchGrappleHook()
 	{
 		CurrentTargetLocation = StartLocation;
 		TargetActor->SetActorLocation(StartLocation);
+
 		TargetActor->DetachFromActor(FDetachmentTransformRules(
 			EDetachmentRule::KeepRelative,
 			EDetachmentRule::KeepRelative, 
 			EDetachmentRule::KeepRelative,
 			true));
 		isAttached = false;
+
+		//For now, the mesh will teleport to the start location 
+		TargetMesh->SetWorldLocation(StartLocation+FVector(0,-10.f,0));
+		TargetMesh->SetSimulatePhysics(false);
+		TargetMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 	}
 }
 
