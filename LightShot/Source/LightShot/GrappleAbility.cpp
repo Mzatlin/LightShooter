@@ -47,6 +47,7 @@ void UGrappleAbility::TickComponent(float DeltaTime, ELevelTick TickType, FActor
 	case Attatched:
 		break;
 	case Released:
+		CleanUpHook();
 		break;
 	 }
 	// ...
@@ -60,7 +61,7 @@ void UGrappleAbility::AttatchHookToTarget()
 		HookProjectile = GetWorld()->SpawnActor<AGrappleHook>(ProjectileClass, OwningCharacter->GetActorLocation(), SpawnRotation);
 		HookProjectile->SetDirectionToTarget(GrappleTarget);
 		HookProjectile->SetOwner(OwningCharacter);
-		ACableActor* Cable = GetWorld()->SpawnActor<ACableActor>(CableClass, OwningCharacter->GetActorLocation(), SpawnRotation);
+		Cable = GetWorld()->SpawnActor<ACableActor>(CableClass, OwningCharacter->GetActorLocation(), SpawnRotation);
 		TArray<UStaticMeshComponent>components;
 		Cable->CableComponent->AttachToComponent(OwningCharacter->GetRootComponent(),
 			FAttachmentTransformRules(
@@ -68,11 +69,22 @@ void UGrappleAbility::AttatchHookToTarget()
 				EAttachmentRule::SnapToTarget,
 				EAttachmentRule::SnapToTarget,
 				true));
-		Cable->CableComponent->SetAttachEndTo(HookProjectile, "None");
 		//send cable component to latchon
+		Cable->CableComponent->SetAttachEndTo(HookProjectile, "None");
+
 		//Note, this will cause the ship to rotate around the grappled axis, which is cool, but not needed.
 		//	OwningCharacter->SetRelativeRotation((GrappleTarget->GetOwner()->GetActorLocation() - OwningCharacter->GetActorLocation()).Rotation());
 		CurrentGrappleState = Attatched;
+	}
+}
+
+void UGrappleAbility::CleanUpHook()
+{
+	if (HookProjectile && HookProjectile->GetAttachState() && Cable) 
+	{
+		Cable->Destroy();
+		HookProjectile->Destroy();
+		CurrentGrappleState = Retracted;
 	}
 }
 
@@ -85,6 +97,7 @@ void UGrappleAbility::TryGrapple()
 	else if (CurrentGrappleState == Attatched && HookProjectile) 
 	{
 		HookProjectile->ReturnDirectionToSender();
+		CurrentGrappleState = Released;
 	}
 	else
 	{

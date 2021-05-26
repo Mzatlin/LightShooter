@@ -32,6 +32,7 @@ public:
 	AGrappleHook();
 	void SetDirectionToTarget(UGrappleTargetComponent* grappleTarget);
 	void ReturnDirectionToSender();
+	bool GetAttachState();
 
 protected:
 	// Called when the game starts or when spawned

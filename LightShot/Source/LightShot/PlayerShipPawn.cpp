@@ -94,14 +94,19 @@ void APlayerShipPawn::HandleDeath()
 void APlayerShipPawn::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	GetInput();
-	MoveActorComponent->CalculateMovement(DeltaTime, MoveDirection);
-	if (PlayerControllerRef && !bIsDead) {
-		FHitResult TraceHitResult;
-		PlayerControllerRef->GetHitResultUnderCursor(ECC_Visibility, false, TraceHitResult);
-		FVector HitLocation = TraceHitResult.ImpactPoint;
-		RotateActorComponent->RotateMesh(HitLocation, TurretMesh);
+	
+	if (GrappleComponent && GrappleComponent->CurrentGrappleState == Retracted) 
+	{
+		GetInput();
+		MoveActorComponent->CalculateMovement(DeltaTime, MoveDirection);
+		if (PlayerControllerRef && !bIsDead) {
+			FHitResult TraceHitResult;
+			PlayerControllerRef->GetHitResultUnderCursor(ECC_Visibility, false, TraceHitResult);
+			FVector HitLocation = TraceHitResult.ImpactPoint;
+			RotateActorComponent->RotateMesh(HitLocation, TurretMesh);
+		}
 	}
+	
 }
 
 // Called to bind functionality to input

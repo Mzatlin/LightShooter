@@ -30,11 +30,14 @@ private:
 	void GatherTargets();
 	UGrappleTargetComponent* FindBestTarget(TArray<AActor*> &outActors);
 	void AttatchHookToTarget();
+	void CleanUpHook();
 
 	AActor* OwningCharacter = nullptr;
 	UGrappleTargetComponent* BestTarget = nullptr;
 	FVector CurrentDirection;
 	AGrappleHook* HookProjectile;
+	ACableActor* Cable;
+	
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;

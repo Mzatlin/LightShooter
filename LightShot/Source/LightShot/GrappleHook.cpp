@@ -36,6 +36,10 @@ void AGrappleHook::ReturnDirectionToSender()
 	Direction = (StartLocation - GetActorLocation()).GetSafeNormal(0.001);
 	ProjectileMovement->Velocity = (Direction * HookSpeed);
 }
+bool AGrappleHook::GetAttachState()
+{
+	return isRetrieved && !isAttached;
+}
 // Called when the game starts or when spawned
 void AGrappleHook::BeginPlay()
 {
@@ -71,12 +75,14 @@ void AGrappleHook::TryDetatchGrappleHook()
 			EDetachmentRule::KeepRelative, 
 			EDetachmentRule::KeepRelative,
 			true));
-		isAttached = false;
+
 
 		//For now, the mesh will teleport to the start location 
 		TargetMesh->SetWorldLocation(StartLocation+FVector(0,-10.f,0));
 		TargetMesh->SetSimulatePhysics(false);
 		TargetMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+
+		isAttached = false;
 	}
 }
 
