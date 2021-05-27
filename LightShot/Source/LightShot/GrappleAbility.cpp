@@ -107,7 +107,6 @@ void UGrappleAbility::TryGrapple()
 
 void UGrappleAbility::GatherTargets()
 {
-	float GrappleRange = 800.f;
 	TArray<AActor*> outActors;
 	TArray<AActor*> ignoreActors;
 	ignoreActors.Add(OwningCharacter);
@@ -147,19 +146,25 @@ UGrappleTargetComponent* UGrappleAbility::FindBestTarget(TArray<AActor*> &outAct
 
 	for (AActor* overlap : outActors) 
 	{
+
+		//Filter out any Actor that doesn't have a UGrappleTargetComponnet 
 		UGrappleTargetComponent* target = overlap->FindComponentByClass<UGrappleTargetComponent>();
 		if (!target)
 		{
 			continue;
 		}
 
+		//Get the current angle of the vector pointing from the target to the player
 		CurrentDirection = (overlap->GetActorLocation() - OwningCharacter->GetActorLocation()).GetSafeNormal(0.001);
 		float currentAngle = FMath::Acos(FVector::DotProduct(CurrentDirection, OwningCharacter->GetActorForwardVector()));
 
-		if (!BestTarget || currentAngle < bestAngle) {
+		//If the current angle is smaller than the best angle, set that as the next best angle
+		if (!BestTarget || currentAngle < bestAngle)
+		{
 			BestTarget = target;
 			bestAngle = currentAngle;
 		}
+
 	}
 
 	return BestTarget;

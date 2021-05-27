@@ -54,6 +54,9 @@ public:
 	TSubclassOf<AGrappleHook> ProjectileClass;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Grapple Hook Components", meta = (AllowPrivateAccess = "true"))
 	TSubclassOf<ACableActor> CableClass;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Grapple Hook Components", meta = (AllowPrivateAccess = "true"))
+	float GrappleRange = 800.f;
+	
 	bool isGrappled = false;
 
 };
