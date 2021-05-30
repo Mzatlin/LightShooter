@@ -65,7 +65,7 @@ void AGrappleHook::TryAttachGrappleHook()
 
 void AGrappleHook::TryDetatchGrappleHook()
 {
-	if (isRetrieved && FVector::DistSquared(GetActorLocation(), StartLocation) <= FVector::DistSquared(GetActorLocation(), TargetLocation))
+	if (isRetrieved && FVector::DistSquared(GetActorLocation(), StartLocation)*4 <= FVector::DistSquared(GetActorLocation(), TargetLocation))
 	{
 			CurrentTargetLocation = StartLocation;
 			TargetActor->DetachFromActor(FDetachmentTransformRules(
@@ -83,18 +83,15 @@ void AGrappleHook::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 	TryAttachGrappleHook();
 	TryDetatchGrappleHook();
-	if (TargetActor && !isRetrieved) 
+	if (isAttached && !isRetrieved) 
 	{
-
 		CurrentTargetLocation = TargetActor->GetActorLocation();
+		SetActorLocation(CurrentTargetLocation);
 	}
-	if (isRetrieved) {
-		CurrentTargetLocation = StartLocation;
-
-		//TargetActor->AddActorLocalOffset(ProjectileMovement->Velocity, true);
-		TargetActor->SetActorLocation(CurrentTargetLocation);
+	if (isRetrieved && !isAttached) {
+		SetActorLocation(CurrentTargetLocation);
 	}
-	SetActorLocation(CurrentTargetLocation);
+	
 
 
 

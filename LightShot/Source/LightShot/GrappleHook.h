@@ -21,7 +21,7 @@ private:
 	FVector StartLocation;
 	AActor* TargetActor;
 	AActor* OwningActor;
-	float HookSpeed = 1000.f;
+	float HookSpeed = 4000.f;
 	bool isAttached = false;
 	bool isRetrieved = false;
 	UStaticMeshComponent* TargetMesh;
