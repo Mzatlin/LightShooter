@@ -39,6 +39,8 @@ protected:
 	virtual void BeginPlay() override;
 
 public:	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Hook Options", meta = (AllowPrivateAccess = "true"))
+	float returnRange = 14500.f;
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 

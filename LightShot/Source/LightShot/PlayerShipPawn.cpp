@@ -85,9 +85,13 @@ void APlayerShipPawn::Grapple()
 
 void APlayerShipPawn::HandleDeath()
 {
-	UE_LOG(LogTemp, Warning, TEXT("The Player Has Died"));
+	if (GrappleComponent) 
+	{
+		GrappleComponent->CurrentGrappleState = Released;
+	}
 	SetActorHiddenInGame(true);
 	bIsDead = true;
+
 }
 
 // Called every frame
@@ -106,7 +110,6 @@ void APlayerShipPawn::Tick(float DeltaTime)
 			RotateActorComponent->RotateMesh(HitLocation, TurretMesh);
 		}
 	}
-	
 }
 
 // Called to bind functionality to input

@@ -65,7 +65,7 @@ void AGrappleHook::TryAttachGrappleHook()
 
 void AGrappleHook::TryDetatchGrappleHook()
 {
-	if (isRetrieved && FVector::DistSquared(GetActorLocation(), StartLocation)*4 <= FVector::DistSquared(GetActorLocation(), TargetLocation))
+	if (isRetrieved && FVector::DistSquared(GetActorLocation(), StartLocation) <= returnRange)
 	{
 			CurrentTargetLocation = StartLocation;
 			TargetActor->DetachFromActor(FDetachmentTransformRules(
