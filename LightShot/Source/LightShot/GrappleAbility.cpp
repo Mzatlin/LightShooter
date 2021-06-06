@@ -48,6 +48,7 @@ void UGrappleAbility::TickComponent(float DeltaTime, ELevelTick TickType, FActor
 		break;
 	case Released:
 		CleanUpHook();
+		HandleGrappledTarget();
 		break;
 	 }
 	// ...
@@ -86,6 +87,15 @@ void UGrappleAbility::CleanUpHook()
 		HookProjectile->Destroy();
 		CurrentGrappleState = Retracted;
 	}
+}
+
+void UGrappleAbility::HandleGrappledTarget()
+{
+	AActor* TargetActor = GrappleTarget->GetOwner();
+/*	if (TargetActor && TargetActor->GetClass()->ImplementsInterface(UIGrappledResponse::StaticClass()))
+	{
+		IIGrappledResponse::Execute_RespondToGrapple(TargetActor);
+	}*/
 }
 
 void UGrappleAbility::TryGrapple()
@@ -131,7 +141,7 @@ void UGrappleAbility::GatherTargets()
 	
 
 	//Find the target that is the closest to the player's forward facing vector
-		GrappleTarget = FindBestTarget(outActors);
+	GrappleTarget = FindBestTarget(outActors);
 	
 	if (GrappleTarget) 
 	{

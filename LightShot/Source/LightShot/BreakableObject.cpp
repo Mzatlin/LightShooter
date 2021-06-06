@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
 #include "BreakableObject.h"
+#include "IGrappledResponse.h"
 
 // Sets default values
 ABreakableObject::ABreakableObject()
@@ -27,5 +27,14 @@ void ABreakableObject::Tick(float DeltaTime)
 void ABreakableObject::HandleBreak()
 {
 	Destroy();
+}
+
+void ABreakableObject::RespondToGrapple_Implementation()
+{
+	Destroy();
+}
+
+void ABreakableObject::ReelInResponse_Implementation()
+{
 }
 

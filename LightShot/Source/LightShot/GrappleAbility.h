@@ -31,6 +31,7 @@ private:
 	UGrappleTargetComponent* FindBestTarget(TArray<AActor*> &outActors);
 	void AttatchHookToTarget();
 	void CleanUpHook();
+	void HandleGrappledTarget();
 
 	AActor* OwningCharacter = nullptr;
 	UGrappleTargetComponent* BestTarget = nullptr;

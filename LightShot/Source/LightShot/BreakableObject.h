@@ -4,10 +4,11 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "IGrappledResponse.h"
 #include "BreakableObject.generated.h"
 
 UCLASS()
-class LIGHTSHOT_API ABreakableObject : public AActor
+class LIGHTSHOT_API ABreakableObject : public AActor, public IIGrappledResponse
 {
 	GENERATED_BODY()
 	
@@ -23,4 +24,6 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 	void HandleBreak();
+	virtual void RespondToGrapple_Implementation() override;
+	virtual void ReelInResponse_Implementation() override;
 };

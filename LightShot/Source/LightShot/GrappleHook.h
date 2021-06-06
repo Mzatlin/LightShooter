@@ -8,6 +8,7 @@
 #include "GrappleHook.generated.h"
 
 class UGrappleTargetComponent;
+class UIGrappledResponse;
 
 UCLASS()
 class LIGHTSHOT_API AGrappleHook : public ALightShotProjectile

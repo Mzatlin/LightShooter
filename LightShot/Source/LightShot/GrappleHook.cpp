@@ -4,6 +4,7 @@
 #include "GrappleHook.h"
 #include "LightShotProjectile.h"
 #include "GameFramework/ProjectileMovementComponent.h"
+#include "IGrappledResponse.h"
 #include "GrappleTargetComponent.h"
 
 
@@ -67,13 +68,18 @@ void AGrappleHook::TryDetatchGrappleHook()
 {
 	if (isRetrieved && FVector::DistSquared(GetActorLocation(), StartLocation) <= returnRange)
 	{
-			CurrentTargetLocation = StartLocation;
-			TargetActor->DetachFromActor(FDetachmentTransformRules(
+		CurrentTargetLocation = StartLocation;
+		TargetActor->DetachFromActor(FDetachmentTransformRules(
 				EDetachmentRule::KeepWorld,
 				EDetachmentRule::KeepWorld,
 				EDetachmentRule::KeepWorld,
 				false));
-			isAttached = false;
+		isAttached = false;
+
+		if (TargetActor && TargetActor->GetClass()->ImplementsInterface(UIGrappledResponse::StaticClass()))
+		{
+			IIGrappledResponse::Execute_RespondToGrapple(TargetActor);
+		}
 	}
 }
 
@@ -91,9 +97,5 @@ void AGrappleHook::Tick(float DeltaTime)
 	if (isRetrieved && !isAttached) {
 		SetActorLocation(CurrentTargetLocation);
 	}
-	
-
-
-
 }
 
