@@ -62,15 +62,18 @@ void APlayerShipPawn::GetInput()
 
 void APlayerShipPawn::FireWeapon()
 {
-	FVector SpawnLocation = FireSpawnPoint->GetComponentLocation();
-	FRotator SpawnRotation = FireSpawnPoint->GetComponentRotation();
-	// spawn the projectile
-	if (ProjectileClass) {
-		ALightShotProjectile* TempProjectile = GetWorld()->SpawnActor<ALightShotProjectile>(ProjectileClass, SpawnLocation, SpawnRotation);
-		TempProjectile->SetOwner(this);
-	}
-	else {
-		UE_LOG(LogTemp, Warning, TEXT("No Projectile Class Found"));
+	if (GrappleComponent && GrappleComponent->CurrentGrappleState == Retracted)
+	{
+		FVector SpawnLocation = FireSpawnPoint->GetComponentLocation();
+		FRotator SpawnRotation = FireSpawnPoint->GetComponentRotation();
+		// spawn the projectile
+		if (ProjectileClass) {
+			ALightShotProjectile* TempProjectile = GetWorld()->SpawnActor<ALightShotProjectile>(ProjectileClass, SpawnLocation, SpawnRotation);
+			TempProjectile->SetOwner(this);
+		}
+		else {
+			UE_LOG(LogTemp, Warning, TEXT("No Projectile Class Found"));
+		}
 	}
 }
 
@@ -79,6 +82,15 @@ void APlayerShipPawn::Grapple()
 	if (GrappleComponent) 
 	{
 		GrappleComponent->TryGrapple();
+	}
+}
+
+void APlayerShipPawn::ReelForward()
+{
+	if (GrappleComponent && GrappleComponent->CurrentGrappleState == Attatched)
+	{
+		//TODO: make getters and setters for the grapple component to prevent unwanted access
+		GrappleComponent->CurrentGrappleState = HeadingToTarget;
 	}
 }
 
@@ -121,5 +133,6 @@ void APlayerShipPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComp
 	PlayerInputComponent->BindAxis(MoveRightBinding);
 	PlayerInputComponent->BindAction("Fire", IE_Pressed, this, &APlayerShipPawn::FireWeapon);
 	PlayerInputComponent->BindAction("Grapple", IE_Pressed, this, &APlayerShipPawn::Grapple);
+	PlayerInputComponent->BindAction("ReelForward", IE_Pressed, this, &APlayerShipPawn::ReelForward);
 }
 

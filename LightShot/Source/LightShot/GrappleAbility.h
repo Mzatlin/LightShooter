@@ -19,6 +19,7 @@ enum GrappleState
 {
 	Retracted UMETA(DisplayName = "Retracted"), 
 	Attatched UMETA(DisplayName = "Attatched"),
+	HeadingToTarget UMETA(DisplayName = "HeadingToTarget"),
 	Released UMETA(DisplayName = "Released")
 };
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
@@ -32,6 +33,7 @@ private:
 	void AttatchHookToTarget();
 	void CleanUpHook();
 	void HandleGrappledTarget();
+	void MoveToTarget();
 
 	AActor* OwningCharacter = nullptr;
 	UGrappleTargetComponent* BestTarget = nullptr;

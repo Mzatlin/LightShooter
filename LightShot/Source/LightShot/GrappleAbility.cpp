@@ -44,7 +44,8 @@ void UGrappleAbility::TickComponent(float DeltaTime, ELevelTick TickType, FActor
 	case Retracted:
 		GatherTargets();
 		break;
-	case Attatched:
+	case HeadingToTarget:
+		MoveToTarget();
 		break;
 	case Released:
 		CleanUpHook();
@@ -96,6 +97,10 @@ void UGrappleAbility::HandleGrappledTarget()
 	{
 		IIGrappledResponse::Execute_RespondToGrapple(TargetActor);
 	}*/
+}
+
+void UGrappleAbility::MoveToTarget()
+{
 }
 
 void UGrappleAbility::TryGrapple()

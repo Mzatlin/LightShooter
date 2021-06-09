@@ -47,6 +47,7 @@ private:
 	bool bIsDead = false;
 
 	void Grapple();
+	void ReelForward();
 
 public:
 	// Sets default values for this pawn's properties
