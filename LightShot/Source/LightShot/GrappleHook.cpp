@@ -39,7 +39,11 @@ void AGrappleHook::ReturnDirectionToSender()
 }
 bool AGrappleHook::GetAttachState()
 {
-	return isRetrieved && !isAttached;
+	return isAttached;
+}
+void AGrappleHook::SetAttachState(bool state)
+{
+	isAttached = state;
 }
 // Called when the game starts or when spawned
 void AGrappleHook::BeginPlay()

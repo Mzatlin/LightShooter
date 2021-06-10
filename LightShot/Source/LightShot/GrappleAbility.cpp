@@ -11,7 +11,9 @@
 #include "CableComponent.h"
 #include "Engine/EngineTypes.h"
 #include "GrappleHook.h"
+#include "IGrappledResponse.h"
 #include "GameFramework/Actor.h"
+
 
 
 
@@ -82,7 +84,7 @@ void UGrappleAbility::AttatchHookToTarget()
 
 void UGrappleAbility::CleanUpHook()
 {
-	if (HookProjectile && HookProjectile->GetAttachState() && Cable) 
+	if (HookProjectile  && Cable && !HookProjectile->GetAttachState())
 	{
 		Cable->Destroy();
 		HookProjectile->Destroy();
@@ -92,15 +94,23 @@ void UGrappleAbility::CleanUpHook()
 
 void UGrappleAbility::HandleGrappledTarget()
 {
-	AActor* TargetActor = GrappleTarget->GetOwner();
-/*	if (TargetActor && TargetActor->GetClass()->ImplementsInterface(UIGrappledResponse::StaticClass()))
-	{
-		IIGrappledResponse::Execute_RespondToGrapple(TargetActor);
-	}*/
+	AActor* TargetActor = GrappleTarget->GetOwner();//currently redundant
 }
 
 void UGrappleAbility::MoveToTarget()
 {
+	AActor* TargetActor = GrappleTarget->GetOwner();
+	if (TargetActor && FVector::Distance(GetOwner()->GetActorLocation(), TargetActor->GetActorLocation()) > 100)
+	{
+		OwningCharacter->AddActorLocalOffset((TargetActor->GetActorLocation() - OwningCharacter->GetActorLocation()).GetSafeNormal(0.001) * 50);
+		return;
+	}
+	if(TargetActor && TargetActor->GetClass()->ImplementsInterface(UIGrappledResponse::StaticClass()))
+	{
+		CurrentGrappleState = Released;
+		HookProjectile->SetAttachState(false);
+		IIGrappledResponse::Execute_RespondToGrapple(TargetActor);
+	}
 }
 
 void UGrappleAbility::TryGrapple()
