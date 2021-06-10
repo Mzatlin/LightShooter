@@ -76,8 +76,15 @@ void UGrappleAbility::AttatchHookToTarget()
 		//send cable component to latchon
 		Cable->CableComponent->SetAttachEndTo(HookProjectile, "None");
 
+		
+
+		FRotator playerRotation = ((GrappleTarget->GetOwner()->GetActorLocation() - OwningCharacter->GetActorLocation()).GetSafeNormal(0.001)).Rotation();
+		UStaticMeshComponent* TargetMesh = OwningCharacter->FindComponentByClass<UStaticMeshComponent>();
+		if (TargetMesh) {
+			TargetMesh->SetWorldRotation(playerRotation);
+		}
 		//Note, this will cause the ship to rotate around the grappled axis, which is cool, but not needed.
-		//	OwningCharacter->SetRelativeRotation((GrappleTarget->GetOwner()->GetActorLocation() - OwningCharacter->GetActorLocation()).Rotation());
+		//OwningCharacter->SetActorRotation((GrappleTarget->GetOwner()->GetActorLocation() - OwningCharacter->GetActorLocation()).Rotation());
 		CurrentGrappleState = Attatched;
 	}
 }
