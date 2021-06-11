@@ -27,14 +27,16 @@ private:
 	bool isRetrieved = false;
 	UStaticMeshComponent* TargetMesh;
 	void TryAttachGrappleHook();
-	void TryDetatchGrappleHook();
+
 public:	
 	// Sets default values for this actor's properties
 	AGrappleHook();
 	void SetDirectionToTarget(UGrappleTargetComponent* grappleTarget);
 	void ReturnDirectionToSender();
 	bool GetAttachState();
-	void SetAttachState(bool state);
+	void SetAttachState(bool state); 
+	void TryDetatchGrappleHook();
+	void DetatchHook();
 
 protected:
 	// Called when the game starts or when spawned

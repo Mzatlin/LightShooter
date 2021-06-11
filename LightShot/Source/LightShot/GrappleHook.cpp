@@ -73,18 +73,23 @@ void AGrappleHook::TryDetatchGrappleHook()
 	if (isRetrieved && FVector::DistSquared(GetActorLocation(), StartLocation) <= returnRange)
 	{
 		CurrentTargetLocation = StartLocation;
-		TargetActor->DetachFromActor(FDetachmentTransformRules(
-				EDetachmentRule::KeepWorld,
-				EDetachmentRule::KeepWorld,
-				EDetachmentRule::KeepWorld,
-				false));
-		isAttached = false;
+		DetatchHook();
 
 		if (TargetActor && TargetActor->GetClass()->ImplementsInterface(UIGrappledResponse::StaticClass()))
 		{
 			IIGrappledResponse::Execute_RespondToGrapple(TargetActor);
 		}
 	}
+}
+
+void AGrappleHook::DetatchHook()
+{
+	TargetActor->DetachFromActor(FDetachmentTransformRules(
+		EDetachmentRule::KeepWorld,
+		EDetachmentRule::KeepWorld,
+		EDetachmentRule::KeepWorld,
+		false));
+	isAttached = false;
 }
 
 // Called every frame
