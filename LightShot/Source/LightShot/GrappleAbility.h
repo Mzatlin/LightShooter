@@ -40,6 +40,8 @@ private:
 	FVector CurrentDirection;
 	AGrappleHook* HookProjectile;
 	ACableActor* Cable;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Hook Options", meta = (AllowPrivateAccess = "true"))
+	float returnRange = 14500.f;
 	
 protected:
 	// Called when the game starts

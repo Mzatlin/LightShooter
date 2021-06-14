@@ -70,15 +70,11 @@ void AGrappleHook::TryAttachGrappleHook()
 
 void AGrappleHook::TryDetatchGrappleHook()
 {
-	if (isRetrieved && FVector::DistSquared(GetActorLocation(), StartLocation) <= returnRange)
+	CurrentTargetLocation = StartLocation;
+	DetatchHook();
+	if (TargetActor && TargetActor->GetClass()->ImplementsInterface(UIGrappledResponse::StaticClass()))
 	{
-		CurrentTargetLocation = StartLocation;
-		DetatchHook();
-
-		if (TargetActor && TargetActor->GetClass()->ImplementsInterface(UIGrappledResponse::StaticClass()))
-		{
-			IIGrappledResponse::Execute_RespondToGrapple(TargetActor);
-		}
+		IIGrappledResponse::Execute_RespondToGrapple(TargetActor);
 	}
 }
 
@@ -97,7 +93,6 @@ void AGrappleHook::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 	TryAttachGrappleHook();
-	TryDetatchGrappleHook();
 	if (isAttached && !isRetrieved) 
 	{
 		CurrentTargetLocation = TargetActor->GetActorLocation();
