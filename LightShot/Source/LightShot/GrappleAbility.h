@@ -18,8 +18,8 @@ UENUM(BlueprintType)
 enum GrappleState
 {
 	Retracted UMETA(DisplayName = "Retracted"), 
-	Attatched UMETA(DisplayName = "Attatched"),
 	HeadingToTarget UMETA(DisplayName = "HeadingToTarget"),
+	Attatched UMETA(DisplayName = "Attatched"),
 	Released UMETA(DisplayName = "Released")
 };
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )

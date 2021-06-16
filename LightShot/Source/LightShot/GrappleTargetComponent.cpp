@@ -19,7 +19,6 @@ void UGrappleTargetComponent::BeginPlay()
 {
 	Super::BeginPlay();
 	// ...
-	
 }
 
 
@@ -34,5 +33,6 @@ void UGrappleTargetComponent::TickComponent(float DeltaTime, ELevelTick TickType
 void UGrappleTargetComponent::SetTargetActive()
 {
 	UE_LOG(LogTemp, Warning, TEXT( "Current Target: %s"), *GetOwner()->GetName());
+	SetTargetUIActive(true);
 }
 

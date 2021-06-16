@@ -76,8 +76,6 @@ void UGrappleAbility::AttatchHookToTarget()
 		//send cable component to latchon
 		Cable->CableComponent->SetAttachEndTo(HookProjectile, "None");
 
-		
-
 		FRotator playerRotation = ((GrappleTarget->GetOwner()->GetActorLocation() - OwningCharacter->GetActorLocation()).GetSafeNormal(0.001)).Rotation();
 		UStaticMeshComponent* TargetMesh = OwningCharacter->FindComponentByClass<UStaticMeshComponent>();
 		if (TargetMesh) {
