@@ -3,9 +3,10 @@
 
 #include "PlayerControllerBase.h"
 
-void APlayerControllerBase::SetPlayerActive(bool isActive)
+void APlayerControllerBase::SetPlayerActive(bool isPlayerActive)
 {
-	if (isActive)
+	isControllerActive = isPlayerActive;
+	if (isControllerActive)
 	{
 		GetPawn()->EnableInput(this);
 	}
@@ -13,6 +14,6 @@ void APlayerControllerBase::SetPlayerActive(bool isActive)
 	{
 		GetPawn()->DisableInput(this);
 	}
-	bShowMouseCursor = isActive;
+	bShowMouseCursor = isPlayerActive;
 
 }

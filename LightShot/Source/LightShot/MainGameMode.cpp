@@ -13,7 +13,11 @@ void AMainGameMode::BeginPlay()
 {
 	Super::BeginPlay();
 	PlayerControllerRef = Cast<APlayerControllerBase>(UGameplayStatics::GetPlayerController(this, 0));
-	PlayerControllerRef->SetPlayerActive(true);
+	if (PlayerControllerRef)
+	{
+		PlayerControllerRef->SetPlayerActive(true);
+	}
+
 }
 
 AMainGameMode::AMainGameMode()
