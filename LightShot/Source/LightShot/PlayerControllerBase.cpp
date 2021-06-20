@@ -5,8 +5,9 @@
 
 void APlayerControllerBase::SetPlayerActive(bool isPlayerActive)
 {
-	isControllerActive = isPlayerActive;
-	if (isControllerActive)
+	bShowMouseCursor = isPlayerActive;
+
+	if (isPlayerActive)
 	{
 		GetPawn()->EnableInput(this);
 	}
@@ -14,6 +15,4 @@ void APlayerControllerBase::SetPlayerActive(bool isPlayerActive)
 	{
 		GetPawn()->DisableInput(this);
 	}
-	bShowMouseCursor = isPlayerActive;
-
 }

@@ -14,7 +14,5 @@ class LIGHTSHOT_API APlayerControllerBase : public APlayerController
 {
 	GENERATED_BODY()
 public:
-	UPROPERTY()
-	bool isControllerActive = false;
 	void SetPlayerActive(bool isPlayerActive);
 };
