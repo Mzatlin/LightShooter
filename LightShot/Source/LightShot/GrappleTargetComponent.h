@@ -6,6 +6,7 @@
 #include "Components/ActorComponent.h"
 #include "GrappleTargetComponent.generated.h"
 
+class AGrappleTargetActor;
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class LIGHTSHOT_API UGrappleTargetComponent : public UActorComponent
@@ -19,13 +20,16 @@ public:
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
+	class UBillboardComponent* BillboardComponent;
+	AGrappleTargetActor* TargetActor;
+
+
 
 public:	
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
-	void SetTargetActive();
-
-	UFUNCTION(BlueprintImplementableEvent)
-	void SetTargetUIActive(bool isActive);
+	void SetTargetActive(bool bActive);
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Grapple Target", meta = (AllowPrivateAccess = "true"))
+	TSubclassOf<AGrappleTargetActor> TargetClass;
 		
 };

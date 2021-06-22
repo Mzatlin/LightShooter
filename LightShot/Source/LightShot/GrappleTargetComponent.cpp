@@ -1,6 +1,5 @@
 // Fill out your copyright notice in the Description page of Project Settings.
-
-
+#include "GrappleTargetActor.h"
 #include "GrappleTargetComponent.h"
 
 // Sets default values for this component's properties
@@ -9,7 +8,6 @@ UGrappleTargetComponent::UGrappleTargetComponent()
 	// Set this component to be initialized when the game starts, and to be ticked every frame.  You can turn these features
 	// off to improve performance if you don't need them.
 	PrimaryComponentTick.bCanEverTick = true;
-
 	// ...
 }
 
@@ -18,6 +16,10 @@ UGrappleTargetComponent::UGrappleTargetComponent()
 void UGrappleTargetComponent::BeginPlay()
 {
 	Super::BeginPlay();
+	FRotator SpawnRotation = FRotator(0, 0, 0);
+	TargetActor = GetWorld()->SpawnActor<AGrappleTargetActor>(TargetClass, GetOwner()->GetActorLocation(), SpawnRotation);
+
+
 	// ...
 }
 
@@ -30,9 +32,10 @@ void UGrappleTargetComponent::TickComponent(float DeltaTime, ELevelTick TickType
 	// ...
 }
 
-void UGrappleTargetComponent::SetTargetActive()
+void UGrappleTargetComponent::SetTargetActive(bool bActive)
 {
-	UE_LOG(LogTemp, Warning, TEXT( "Current Target: %s"), *GetOwner()->GetName());
-	SetTargetUIActive(true);
+	if (TargetActor) {
+		TargetActor->SetTargetUIActive(bActive);
+	}
 }
 

@@ -122,6 +122,7 @@ void UGrappleAbility::TryGrapple()
 {
 	if (CurrentGrappleState == Retracted && GrappleTarget) 
 	{
+		GrappleTarget->SetTargetActive(false);
 		AttatchHookToTarget();
 	}
 	else if (CurrentGrappleState == Attatched && HookProjectile) 
@@ -161,11 +162,15 @@ void UGrappleAbility::GatherTargets()
 	
 
 	//Find the target that is the closest to the player's forward facing vector
+	if (GrappleTarget) {
+		GrappleTarget->SetTargetActive(false);
+	}
+
 	GrappleTarget = FindBestTarget(outActors);
 	
 	if (GrappleTarget) 
 	{
-		GrappleTarget->SetTargetActive();
+		GrappleTarget->SetTargetActive(true);
 	}
 }
 
