@@ -18,6 +18,14 @@ void UGrappleTargetComponent::BeginPlay()
 	Super::BeginPlay();
 	FRotator SpawnRotation = FRotator(0, 0, 0);
 	TargetActor = GetWorld()->SpawnActor<AGrappleTargetActor>(TargetClass, GetOwner()->GetActorLocation(), SpawnRotation);
+	if (TargetActor) {
+		TargetActor->AttachToComponent(GetOwner()->GetRootComponent(),
+			FAttachmentTransformRules(
+				EAttachmentRule::SnapToTarget,
+				EAttachmentRule::SnapToTarget,
+				EAttachmentRule::SnapToTarget,
+				true));
+	}
 
 
 	// ...
