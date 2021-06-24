@@ -105,6 +105,7 @@ void UGrappleAbility::HandleGrappledTarget()
 
 void UGrappleAbility::MoveToTarget()
 {
+	GrappleTarget->SetTargetActive(false);
 	AActor* TargetActor = GrappleTarget->GetOwner();
 	if (TargetActor && FVector::Distance(GetOwner()->GetActorLocation(), TargetActor->GetActorLocation()) > 100)
 	{
@@ -122,11 +123,11 @@ void UGrappleAbility::TryGrapple()
 {
 	if (CurrentGrappleState == Retracted && GrappleTarget) 
 	{
-		GrappleTarget->SetTargetActive(false);
 		AttatchHookToTarget();
 	}
 	else if (CurrentGrappleState == Attatched && HookProjectile) 
 	{
+		GrappleTarget->SetTargetActive(false);
 		HookProjectile->ReturnDirectionToSender();
 		CurrentGrappleState = Released;
 	}
