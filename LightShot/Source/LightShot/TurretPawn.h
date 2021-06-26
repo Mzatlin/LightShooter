@@ -4,10 +4,13 @@
 #include "EnemyPawnBase.h"
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
+#include "IGrappledResponse.h"
 #include "TurretPawn.generated.h"
 
+class ABreakableObject;
+
 UCLASS()
-class LIGHTSHOT_API ATurretPawn : public AEnemyPawnBase
+class LIGHTSHOT_API ATurretPawn : public AEnemyPawnBase, public IIGrappledResponse
 {
 	GENERATED_BODY()
 
