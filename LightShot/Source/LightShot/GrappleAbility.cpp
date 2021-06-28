@@ -154,7 +154,7 @@ void UGrappleAbility::GatherTargets()
 			OwningCharacter->GetActorLocation(),
 			GrappleRange,
 			traceObjectTypes,
-			seekClass,
+			nullptr,
 			ignoreActors,
 			outActors
 			);
