@@ -102,8 +102,8 @@ void APlayerShipPawn::HandleDeath()
 		GrappleComponent->CurrentGrappleState = Released;
 	}
 	SetActorHiddenInGame(true);
+	SetActorEnableCollision(false);
 	bIsDead = true;
-
 }
 
 // Called every frame
@@ -111,7 +111,7 @@ void APlayerShipPawn::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 	
-	if (GrappleComponent && GrappleComponent->CurrentGrappleState == Retracted) 
+	if (!bIsDead && GrappleComponent && GrappleComponent->CurrentGrappleState == Retracted) 
 	{
 		GetInput();
 		MoveActorComponent->CalculateMovement(DeltaTime, MoveDirection);
@@ -121,6 +121,9 @@ void APlayerShipPawn::Tick(float DeltaTime)
 			FVector HitLocation = TraceHitResult.ImpactPoint;
 			RotateActorComponent->RotateMesh(HitLocation, TurretMesh);
 		}
+	}
+	else {
+		MoveActorComponent->CalculateMovement(DeltaTime, FVector(0,0,0));
 	}
 }
 

@@ -36,5 +36,6 @@ void ABreakableObject::RespondToGrapple_Implementation()
 
 void ABreakableObject::ReelInResponse_Implementation()
 {
+	Destroy();
 }
 

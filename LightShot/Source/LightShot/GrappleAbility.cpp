@@ -114,6 +114,10 @@ void UGrappleAbility::MoveToTarget()
 	}
 	if(TargetActor)
 	{
+		/*if (TargetActor->GetClass()->ImplementsInterface(UIGrappledResponse::StaticClass()))
+		{
+			IIGrappledResponse::Execute_ReelInResponse(TargetActor);
+		}*/
 		HookProjectile->SetAttachState(false);
 		CurrentGrappleState = Released;
 	}
